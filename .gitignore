@@ -1,0 +1,13 @@
+# Ruta del archivo: .gitignore
+# Evita subir al repositorio archivos que no deben ser públicos:
+# credenciales, dependencias y artefactos de compilación.
+
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env*.local
+*.log
+.vercel
+.DS_Store

@@ -1,0 +1,93 @@
+/* Ruta del archivo: app/globals.css */
+/* Estilos base globales del sitio: tipografía, scroll, accesibilidad y el
+   motivo visual de "panel de estado" (bordes tipo escuadra, líneas de escaneo). */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scroll suave al navegar entre secciones mediante anclas */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased;
+}
+
+/* Foco de teclado siempre visible: requisito de accesibilidad (a11y) */
+:focus-visible {
+  outline: 2px solid theme("colors.electric.DEFAULT");
+  outline-offset: 3px;
+}
+
+/* Respeta la preferencia del usuario de reducir animaciones (accesibilidad) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Componente reutilizable: tarjeta con "esquinas de escuadra" en tinta negra,
+   como el trazo de un sello o marco impreso sobre papel. Se mantiene el
+   motivo de panel de monitoreo, pero en negro para dejar el rojo únicamente
+   como acento puntual (papel blanco + trazo negro + sello rojo). */
+.corner-card {
+  position: relative;
+}
+.corner-card::before,
+.corner-card::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: theme("colors.ink.DEFAULT");
+  opacity: 0.85;
+}
+.corner-card::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.corner-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+/* Etiqueta tipo "eyebrow" en fuente monoespaciada, refuerza el motivo de sistema/consola */
+.tag-mono {
+  @apply font-mono text-xs tracking-widest uppercase text-electric;
+}
+
+/* FORMA ESTILO JAPONÉS — elemento de firma visual del sitio: un círculo de
+   tinta roja (evoca el sello "hanko" y el círculo del hinomaru) que se usa
+   como acento decorativo detrás de titulares o como insignia de "verificado".
+   Se usa con moderación: es el único momento "audaz" de la paleta. */
+.seal-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.seal-ring::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 2px solid theme("colors.electric.DEFAULT");
+  border-radius: 9999px;
+  opacity: 0.9;
+}
+
+/* Divisor delgado tipo trazo de tinta (sumi), para separar secciones con
+   sutileza en vez de sombras pesadas */
+.ink-rule {
+  height: 1px;
+  background: theme("colors.ink.DEFAULT");
+  opacity: 0.12;
+}
