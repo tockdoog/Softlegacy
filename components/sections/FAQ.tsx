@@ -1,7 +1,8 @@
 // Ruta del archivo: components/sections/FAQ.tsx
-// SECCIÓN 10 — PREGUNTAS FRECUENTES (versión futurista)
-// Se usa <details>/<summary> nativo por accesibilidad y rendimiento (no
-// requiere JavaScript adicional); la animación de la flecha sí usa Tailwind.
+// SECCIÓN 10 — PREGUNTAS FRECUENTES. Tema claro. Se usa <details>/<summary>
+// nativo por accesibilidad y rendimiento (no requiere JavaScript adicional).
+
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const FAQS = [
   { q: "¿Cuánto cuesta un sistema a la medida?", a: "Desde $3.500.000 COP. El valor exacto se define en el diagnóstico gratuito." },
@@ -13,30 +14,30 @@ const FAQS = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="bg-ink py-24">
+    <section id="faq" className="bg-paper-off py-24">
       <div className="mx-auto max-w-3xl px-6 lg:px-10">
-        <div className="text-center">
+        <ScrollReveal className="text-center">
           <span className="tag-mono">Preguntas frecuentes</span>
-          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+          <h2 className="mt-4 font-display text-4xl font-bold text-ink jp-mark">
             Dudas resueltas
           </h2>
-        </div>
+        </ScrollReveal>
 
-        <div className="mt-12 divide-y divide-white/10 border-t border-b border-white/10">
+        <ScrollReveal delay={0.15} className="mt-12 divide-y divide-ink/10 border-t border-b border-ink/10">
           {FAQS.map((item) => (
             <details key={item.q} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between font-display text-base font-semibold text-paper">
+              <summary className="flex cursor-pointer list-none items-center justify-between font-display text-base font-semibold text-ink">
                 {item.q}
                 <span className="ml-4 font-mono text-electric transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-paper/55">
+              <p className="mt-3 text-sm leading-relaxed text-ink/60">
                 {item.a}
               </p>
             </details>
           ))}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

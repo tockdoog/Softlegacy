@@ -1,14 +1,14 @@
 // Ruta del archivo: components/sections/ContactForm.tsx
-// SECCIÓN 12 — FORMULARIO DE CONTACTO
-// Objetivo: capturar leads calificados con fricción mínima. Incluye
-// validación en el cliente (experiencia de usuario) y un campo honeypot
-// oculto para bots; la validación real y definitiva ocurre en el servidor
-// (app/api/contact/route.ts), nunca se confía solo en el cliente.
-// Animación recomendada: transición suave entre estado normal / cargando / éxito.
+// SECCIÓN 12 — FORMULARIO DE CONTACTO. Tema claro (ya lo tenías así).
+// Incluye validación en el cliente (experiencia de usuario) y un campo
+// honeypot oculto para bots; la validación real y definitiva ocurre en el
+// servidor (app/api/contact/route.ts), nunca se confía solo en el cliente.
+// Animado al entrar en el viewport con ScrollReveal.
 
 "use client";
 
 import { useState, FormEvent } from "react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const SERVICIOS = [
   "Desarrollo de software a la medida",
@@ -61,9 +61,9 @@ export default function ContactForm() {
     <section id="contacto" className="bg-paper-off py-24">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:px-10">
         {/* Columna de contexto */}
-        <div>
-          <span className="tag-mono text-navy">Contáctanos</span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">
+        <ScrollReveal>
+          <span className="tag-mono">Contáctanos</span>
+          <h2 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl jp-mark">
             Cuéntanos qué necesita tu negocio
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate">
@@ -72,135 +72,137 @@ export default function ContactForm() {
           </p>
 
           <div className="mt-8 space-y-3 text-sm text-slate">
-            <p>✉️ contacto@softlegacy.com.co</p>
+            <p>✉️ softlegacytkd@gmail.com</p>
             <p>📞 +57 300 000 0000</p>
             <p>📍 Bogotá D.C., Colombia</p>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Formulario */}
-        <form
-          onSubmit={manejarEnvio}
-          className="corner-card space-y-5 rounded-lg border border-ink/10 bg-paper p-8"
-          noValidate
-        >
-          <div>
-            <label htmlFor="nombre" className="text-sm font-medium text-ink">
-              Nombre completo
-            </label>
-            <input
-              id="nombre"
-              name="nombre"
-              type="text"
-              required
-              minLength={2}
-              maxLength={100}
-              autoComplete="name"
-              className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
-            />
-          </div>
-
-          <div className="grid gap-5 sm:grid-cols-2">
-            <div>
-              <label htmlFor="correo" className="text-sm font-medium text-ink">
-                Correo electrónico
-              </label>
-              <input
-                id="correo"
-                name="correo"
-                type="email"
-                required
-                maxLength={150}
-                autoComplete="email"
-                className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
-              />
-            </div>
-            <div>
-              <label htmlFor="telefono" className="text-sm font-medium text-ink">
-                Teléfono (opcional)
-              </label>
-              <input
-                id="telefono"
-                name="telefono"
-                type="tel"
-                maxLength={20}
-                autoComplete="tel"
-                className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="servicio" className="text-sm font-medium text-ink">
-              Servicio de interés
-            </label>
-            <select
-              id="servicio"
-              name="servicio"
-              required
-              defaultValue=""
-              className="mt-1.5 w-full rounded-md border border-ink/15 bg-paper px-4 py-2.5 text-sm outline-none focus:border-electric"
-            >
-              <option value="" disabled>
-                Selecciona un servicio
-              </option>
-              {SERVICIOS.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="mensaje" className="text-sm font-medium text-ink">
-              Cuéntanos sobre tu proyecto
-            </label>
-            <textarea
-              id="mensaje"
-              name="mensaje"
-              required
-              minLength={10}
-              maxLength={2000}
-              rows={4}
-              className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
-            />
-          </div>
-
-          {/* Campo honeypot: oculto visualmente y para lectores de pantalla.
-              Las personas nunca lo llenan; si un bot lo llena, el servidor
-              descarta la solicitud como spam (ver app/api/contact/route.ts). */}
-          <div className="hidden" aria-hidden="true">
-            <label htmlFor="sitioWeb">No llenar este campo</label>
-            <input
-              id="sitioWeb"
-              name="sitioWeb"
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={estado === "enviando"}
-            className="w-full rounded-md bg-electric px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-electric-light disabled:opacity-60"
+        <ScrollReveal delay={0.15}>
+          <form
+            onSubmit={manejarEnvio}
+            className="space-y-5 rounded-lg border border-ink/10 bg-paper p-8"
+            noValidate
           >
-            {estado === "enviando" ? "Enviando..." : "Enviar mensaje"}
-          </button>
+            <div>
+              <label htmlFor="nombre" className="text-sm font-medium text-ink">
+                Nombre completo
+              </label>
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                required
+                minLength={2}
+                maxLength={100}
+                autoComplete="name"
+                className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
+              />
+            </div>
 
-          {/* Mensajes de estado accesibles (anunciados por lectores de pantalla) */}
-          <div role="status" aria-live="polite">
-            {estado === "exito" && (
-              <p className="text-sm font-medium text-navy">
-                ¡Gracias! Recibimos tu mensaje y te contactaremos pronto.
-              </p>
-            )}
-            {estado === "error" && (
-              <p className="text-sm font-medium text-red-600">{mensajeError}</p>
-            )}
-          </div>
-        </form>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label htmlFor="correo" className="text-sm font-medium text-ink">
+                  Correo electrónico
+                </label>
+                <input
+                  id="correo"
+                  name="correo"
+                  type="email"
+                  required
+                  maxLength={150}
+                  autoComplete="email"
+                  className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
+                />
+              </div>
+              <div>
+                <label htmlFor="telefono" className="text-sm font-medium text-ink">
+                  Teléfono (opcional)
+                </label>
+                <input
+                  id="telefono"
+                  name="telefono"
+                  type="tel"
+                  maxLength={20}
+                  autoComplete="tel"
+                  className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="servicio" className="text-sm font-medium text-ink">
+                Servicio de interés
+              </label>
+              <select
+                id="servicio"
+                name="servicio"
+                required
+                defaultValue=""
+                className="mt-1.5 w-full rounded-md border border-ink/15 bg-paper px-4 py-2.5 text-sm outline-none focus:border-electric"
+              >
+                <option value="" disabled>
+                  Selecciona un servicio
+                </option>
+                {SERVICIOS.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="mensaje" className="text-sm font-medium text-ink">
+                Cuéntanos sobre tu proyecto
+              </label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                required
+                minLength={10}
+                maxLength={2000}
+                rows={4}
+                className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
+              />
+            </div>
+
+            {/* Campo honeypot: oculto visualmente y para lectores de pantalla.
+                Las personas nunca lo llenan; si un bot lo llena, el servidor
+                descarta la solicitud como spam (ver app/api/contact/route.ts). */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="sitioWeb">No llenar este campo</label>
+              <input
+                id="sitioWeb"
+                name="sitioWeb"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={estado === "enviando"}
+              className="w-full rounded-md bg-electric px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-electric-light disabled:opacity-60"
+            >
+              {estado === "enviando" ? "Enviando..." : "Enviar mensaje"}
+            </button>
+
+            {/* Mensajes de estado accesibles (anunciados por lectores de pantalla) */}
+            <div role="status" aria-live="polite">
+              {estado === "exito" && (
+                <p className="text-sm font-medium text-electric">
+                  ¡Gracias! Recibimos tu mensaje y te contactaremos pronto.
+                </p>
+              )}
+              {estado === "error" && (
+                <p className="text-sm font-medium text-red-600">{mensajeError}</p>
+              )}
+            </div>
+          </form>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -1,7 +1,8 @@
 // Ruta del archivo: tailwind.config.ts
-// Sistema de diseño futurista: fondo oscuro predominante, acentos de neón
-// (rojo eléctrico + cian), efectos de brillo (glow) y animaciones para
-// glassmorphism, degradados en movimiento y partículas.
+// Sistema de diseño: blanco predominante, rojo como acento secundario,
+// estética japonesa (washi, sumi, líneas finas) combinada con elementos
+// tecnológicos (grid, glow, scan). Mismos nombres de color que antes para
+// no romper componentes existentes; solo cambian los valores.
 
 import type { Config } from "tailwindcss";
 
@@ -10,17 +11,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Fondo base: negro profundo con tinte azulado (no negro puro, evita
-        // sensación de "pantalla apagada")
-        ink: { DEFAULT: "#0A0B10", soft: "#12141C" },
-        navy: { DEFAULT: "#151827", light: "#1E2236" },
-        // Acento primario: rojo eléctrico de marca
-        electric: { DEFAULT: "#FF2D4D", light: "#FF5C77" },
-        // Acento secundario: cian, refuerza la sensación "tecnológica"
+        // "paper": blanco washi, ahora es el fondo predominante del sitio
+        paper: { DEFAULT: "#FFFFFF", off: "#FAFAF7", muted: "#F1EFEA" },
+        // "ink" (tinta sumi): antes era el fondo oscuro global; ahora es el
+        // color de texto principal y el fondo de las pocas secciones oscuras
+        // (footer, banner de CTA) para dar contraste dramático tipo sumi-e.
+        ink: { DEFAULT: "#16171C", soft: "#2B2D36" },
+        navy: { DEFAULT: "#101114", light: "#1B1C21" },
+        // "electric": acento rojo (aka), ahora es rojo secundario tipo hinomaru
+        electric: { DEFAULT: "#E11D2E", light: "#FF4D63" },
+        // "cyan" se mantiene definido por compatibilidad con componentes que
+        // aún no revisamos, pero ya no es protagonista de la paleta.
         cyan: { DEFAULT: "#2DE0FF", soft: "#8FF0FF" },
-        signal: { DEFAULT: "#FF2D4D", soft: "#FFB5C0" },
-        paper: { DEFAULT: "#FFFFFF", off: "#F5F6FA" },
-        slate: { DEFAULT: "#8A8FA3" },
+        signal: { DEFAULT: "#E11D2E", soft: "#FFB5C0" },
+        slate: { DEFAULT: "#6B6E7A" },
       },
       fontFamily: {
         display: ["var(--font-space-grotesk)", "sans-serif"],
@@ -28,12 +32,17 @@ const config: Config = {
         mono: ["var(--font-plex-mono)", "monospace"],
       },
       backgroundImage: {
+        // Grid técnico, ahora en tono oscuro muy sutil sobre fondo blanco
         "grid-pattern":
-          "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+          "linear-gradient(rgba(22,23,28,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(22,23,28,0.05) 1px, transparent 1px)",
+        // Resplandor sutil en rojo, para usar sobre fondo oscuro (CTA/footer)
         "mesh-glow":
-          "radial-gradient(circle at 20% 20%, rgba(255,45,77,0.25), transparent 40%), radial-gradient(circle at 80% 60%, rgba(45,224,255,0.18), transparent 45%)",
+          "radial-gradient(circle at 20% 20%, rgba(225,29,46,0.25), transparent 40%), radial-gradient(circle at 80% 60%, rgba(225,29,46,0.12), transparent 45%)",
+        // Patrón "seigaiha" (olas japonesas), decorativo, muy sutil
+        "seigaiha":
+          "radial-gradient(circle at 0 50%, transparent 20px, rgba(22,23,28,0.04) 21px, rgba(22,23,28,0.04) 22px, transparent 23px)",
       },
-      backgroundSize: { grid: "44px 44px" },
+      backgroundSize: { grid: "44px 44px", seigaiha: "60px 30px" },
       keyframes: {
         scan: {
           "0%": { transform: "translateY(-100%)" },

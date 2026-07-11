@@ -1,7 +1,5 @@
 // Ruta del archivo: components/sections/Process.tsx
-// SECCIÓN 5 — PROCESO DE TRABAJO (versión futurista)
-// Objetivo: transmitir método y orden. Línea vertical conectora animada
-// que se "dibuja" progresivamente al hacer scroll.
+// SECCIÓN 5 — PROCESO DE TRABAJO. Tema claro con línea conectora sutil.
 
 "use client";
 
@@ -18,18 +16,18 @@ const STEPS = [
 
 export default function Process() {
   return (
-    <section id="proceso" className="bg-ink py-24">
+    <section id="proceso" className="bg-paper py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Cómo trabajamos</span>
-          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+          <h2 className="mt-4 font-display text-4xl font-bold text-ink jp-mark">
             Un método, seis pasos
           </h2>
         </div>
 
         <div className="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Línea conectora sutil, solo decorativa en escritorio */}
-          <div className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-white/10 lg:block" />
+          <div className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-ink/10 lg:block" />
 
           {STEPS.map((step, i) => (
             <motion.div
@@ -40,13 +38,13 @@ export default function Process() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="relative"
             >
-              <div className="glass-card inline-flex h-12 w-12 items-center justify-center rounded-full">
+              <div className="glass-card inline-flex h-12 w-12 items-center justify-center rounded-full border border-ink/10">
                 <span className="font-mono text-sm text-electric">{step.n}</span>
               </div>
-              <h3 className="mt-4 font-display text-lg font-semibold text-paper">
+              <h3 className="mt-4 font-display text-lg font-semibold text-ink">
                 {step.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-paper/55">
+              <p className="mt-2 text-sm leading-relaxed text-ink/60">
                 {step.text}
               </p>
             </motion.div>

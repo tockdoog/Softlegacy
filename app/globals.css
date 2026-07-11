@@ -1,6 +1,7 @@
 /* Ruta del archivo: app/globals.css */
-/* Estilos base globales: tema oscuro futurista, glassmorphism, brillos
-   (glow) y accesibilidad (foco visible, reduced-motion). */
+/* Estilos base globales: tema claro (blanco predominante), acentos en rojo,
+   estética japonesa-tecnológica (líneas finas, glow sutil, glassmorphism
+   claro) y accesibilidad (foco visible, reduced-motion). */
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +12,8 @@ html {
 }
 
 body {
-  @apply bg-ink text-paper font-body antialiased;
+  /* Fondo blanco predominante, texto tinta (ink) oscuro */
+  @apply bg-paper text-ink font-body antialiased;
 }
 
 /* Foco de teclado siempre visible (accesibilidad) */
@@ -30,32 +32,49 @@ body {
   }
 }
 
-/* Tarjeta de vidrio (glassmorphism): fondo translúcido + desenfoque,
-   estética "panel de sistema futurista" */
+/* Tarjeta de vidrio clara: para usar sobre fondo blanco o sobre secciones oscuras */
 .glass-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(22, 23, 28, 0.08);
   backdrop-filter: blur(16px);
 }
 
-/* Borde que brilla en hover, refuerza sensación tecnológica sin saturar de texto */
+/* Variante de tarjeta de vidrio para fondos oscuros (footer, CTA) */
+.glass-card-dark {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+/* Borde que brilla en rojo al pasar el mouse (acento tecnológico) */
 .glow-border {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .glow-border:hover {
-  border-color: rgba(255, 45, 77, 0.6);
-  box-shadow: 0 0 30px rgba(255, 45, 77, 0.15);
+  border-color: rgba(225, 29, 46, 0.5);
+  box-shadow: 0 0 30px rgba(225, 29, 46, 0.12);
 }
 
-/* Etiqueta tipo "eyebrow" en fuente monoespaciada */
+/* Etiqueta tipo "eyebrow" en fuente monoespaciada, acento rojo */
 .tag-mono {
   @apply font-mono text-xs tracking-widest uppercase text-electric;
 }
 
-/* Texto con degradado, para titulares cortos e impactantes */
+/* Texto con degradado corto: de tinta a rojo, para titulares */
 .text-gradient {
-  background: linear-gradient(90deg, #ffffff 0%, #ff5c77 60%, #2de0ff 100%);
+  background: linear-gradient(90deg, #16171c 0%, #e11d2e 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Línea decorativa vertical tipo "sello" japonés, usada junto a títulos */
+.jp-mark::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+  background: theme("colors.electric.DEFAULT");
 }

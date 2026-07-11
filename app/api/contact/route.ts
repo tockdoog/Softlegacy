@@ -5,6 +5,7 @@
 // 2) Valida y sanitiza estrictamente el cuerpo de la solicitud (Zod).
 // 3) Verifica un campo "honeypot" para descartar bots simples.
 // 4) Nunca expone detalles internos del error al cliente.
+// 5) Envía el mensaje por correo real usando Resend hacia CONTACT_TO_EMAIL.
 
 import { NextRequest, NextResponse } from "next/server";
 import { contactSchema, sanitizeText } from "@/lib/validation";
@@ -68,25 +69,52 @@ export async function POST(request: NextRequest) {
     mensaje: sanitizeText(datos.mensaje),
   };
 
+  // Dirección de destino y remitente, configurables por entorno (nunca hardcodeadas)
+  const destino = process.env.CONTACT_TO_EMAIL ?? "softlegacytkd@gmail.com";
+  const remitente = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
+
   try {
-    // Punto de integración: aquí se conecta el envío real (correo, CRM, base
-    // de datos, etc.). Se deja preparado para un proveedor transaccional
-    // (por ejemplo Resend, SendGrid o un webhook de CRM), usando variables
-    // de entorno para no exponer credenciales en el código (ver .env.example).
-    //
-    // await fetch("https://api.resend.com/emails", {
-    //   method: "POST",
-    //   headers: {
-    //     Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     from: "SoftLegacy <contacto@softlegacy.com.co>",
-    //     to: "ventas@softlegacy.com.co",
-    //     subject: `Nuevo contacto: ${datosSeguros.nombre}`,
-    //     text: JSON.stringify(datosSeguros, null, 2),
-    //   }),
-    // });
+    // 5) Envío real del correo mediante Resend. Si falta la API key, se
+    // registra internamente pero NO se le revela al cliente (evita fuga de
+    // información sobre la configuración del servidor).
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY no está configurada en las variables de entorno.");
+      return NextResponse.json(
+        { ok: false, error: "El servicio de contacto no está disponible en este momento." },
+        { status: 500 }
+      );
+    }
+
+    const respuesta = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: `SoftLegacy <${remitente}>`,
+        to: destino,
+        reply_to: datosSeguros.correo,
+        subject: `Nuevo contacto: ${datosSeguros.nombre}`,
+        text: [
+          `Nombre: ${datosSeguros.nombre}`,
+          `Correo: ${datosSeguros.correo}`,
+          `Telefono: ${datosSeguros.telefono || "No proporcionado"}`,
+          `Servicio: ${datosSeguros.servicio}`,
+          `Mensaje: ${datosSeguros.mensaje}`,
+        ].join("\n"),
+      }),
+    });
+
+    // Si Resend responde con error, se registra internamente pero no se
+    // expone el detalle técnico al cliente.
+    if (!respuesta.ok) {
+      console.error("Error de Resend:", respuesta.status, await respuesta.text());
+      return NextResponse.json(
+        { ok: false, error: "No pudimos enviar tu mensaje. Intenta de nuevo más tarde." },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json({ ok: true, mensaje: "Mensaje recibido correctamente." });
   } catch {

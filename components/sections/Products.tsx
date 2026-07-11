@@ -1,7 +1,6 @@
 // Ruta del archivo: components/sections/Products.tsx
-// SECCIÓN 4 — PRODUCTOS Y SOLUCIONES (versión futurista)
-// Objetivo: mostrar el rango de inversión en COP de forma directa, con
-// tarjetas que se iluminan al pasar el cursor. Precios referenciales.
+// SECCIÓN 4 — PRODUCTOS Y SOLUCIONES. Tema claro; precios en pesos
+// colombianos (COP), referenciales.
 
 "use client";
 
@@ -16,15 +15,15 @@ const SOLUTIONS = [
 
 export default function Products() {
   return (
-    <section id="soluciones" className="relative overflow-hidden bg-navy py-24">
-      <div className="pointer-events-none absolute inset-0 bg-mesh-glow opacity-60" />
+    <section id="soluciones" className="relative overflow-hidden bg-paper-off py-24">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-glow opacity-30" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Soluciones</span>
-          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+          <h2 className="mt-4 font-display text-4xl font-bold text-ink jp-mark">
             Sistemas a tu medida
           </h2>
-          <p className="mt-3 text-sm text-paper/50">
+          <p className="mt-3 text-sm text-ink/50">
             Valores referenciales en pesos colombianos (COP). Precio final en el diagnóstico gratuito.
           </p>
         </div>
@@ -38,17 +37,17 @@ export default function Products() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               whileHover={{ y: -8 }}
-              className="glass-card glow-border flex flex-col justify-between rounded-2xl p-6"
+              className="glass-card glow-border flex flex-col justify-between rounded-2xl border border-ink/10 p-6"
             >
               <div>
                 <span className="font-mono text-xs tracking-widest text-electric">
                   {sol.tag}
                 </span>
-                <h3 className="mt-3 font-display text-lg font-semibold text-paper">
+                <h3 className="mt-3 font-display text-lg font-semibold text-ink">
                   {sol.title}
                 </h3>
               </div>
-              <p className="mt-8 font-mono text-sm text-cyan">{sol.price}</p>
+              <p className="mt-8 font-mono text-sm text-ink/70">{sol.price}</p>
             </motion.div>
           ))}
         </div>

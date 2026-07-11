@@ -1,8 +1,10 @@
 // Ruta del archivo: components/sections/Testimonials.tsx
-// SECCIÓN 9 — TESTIMONIOS (EJEMPLOS, versión futurista)
+// SECCIÓN 9 — TESTIMONIOS (EJEMPLOS). Tema claro.
 // IMPORTANTE: reemplazar por testimonios reales antes de publicar (evitar
 // publicidad engañosa). Carrusel simple con desplazamiento horizontal y
 // snap-scroll nativo (sin JS adicional para el scroll, mejor rendimiento).
+
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const TESTIMONIALS = [
   { quote: "Controlamos las tres sedes desde un solo sistema.", author: "Gerente de operaciones (ejemplo)" },
@@ -12,30 +14,30 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-ink py-24">
+    <section className="bg-paper py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-xl">
+        <ScrollReveal className="max-w-xl">
           <span className="tag-mono">Testimonios</span>
-          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+          <h2 className="mt-4 font-display text-4xl font-bold text-ink jp-mark">
             Quienes ya confiaron en nosotros
           </h2>
-          <p className="mt-2 text-xs text-paper/40">* Ejemplos ilustrativos de formato.</p>
-        </div>
+          <p className="mt-2 text-xs text-ink/40">* Ejemplos ilustrativos de formato.</p>
+        </ScrollReveal>
 
-        <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
+        <ScrollReveal delay={0.15} className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
           {TESTIMONIALS.map((t) => (
             <div
               key={t.author}
-              className="glass-card glow-border w-[300px] shrink-0 snap-start rounded-2xl p-7"
+              className="glass-card glow-border w-[300px] shrink-0 snap-start rounded-2xl border border-ink/10 p-7"
             >
               <p className="font-display text-3xl text-electric">"</p>
-              <p className="-mt-3 text-sm leading-relaxed text-paper/75">
+              <p className="-mt-3 text-sm leading-relaxed text-ink/75">
                 {t.quote}
               </p>
-              <p className="mt-6 text-xs font-medium text-cyan">{t.author}</p>
+              <p className="mt-6 text-xs font-medium text-electric">{t.author}</p>
             </div>
           ))}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

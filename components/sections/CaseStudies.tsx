@@ -1,8 +1,7 @@
 // Ruta del archivo: components/sections/CaseStudies.tsx
-// SECCIÓN 8 — CASOS DE USO / PROYECTOS (versión futurista)
-// Objetivo: resultados concretos y breves, con imagen ilustrativa por caso.
-// Imágenes sugeridas en /public/images/case-*.jpg (capturas de dashboards
-// reales o fotos del sector del cliente).
+// SECCIÓN 8 — CASOS DE USO / PROYECTOS. Tema claro con tarjetas de imagen.
+// Imágenes sugeridas en /public/images/case-*.jpg (capturas reales o fotos
+// del sector del cliente).
 
 "use client";
 
@@ -18,11 +17,11 @@ const CASES = [
 
 export default function CaseStudies() {
   return (
-    <section id="casos" className="bg-navy py-24">
+    <section id="casos" className="bg-paper py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Casos de uso</span>
-          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+          <h2 className="mt-4 font-display text-4xl font-bold text-ink jp-mark">
             Resultados, no promesas
           </h2>
         </div>
@@ -35,7 +34,7 @@ export default function CaseStudies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card glow-border overflow-hidden rounded-2xl"
+              className="glass-card glow-border overflow-hidden rounded-2xl border border-ink/10"
             >
               {/* Reemplaza por una captura o foto real del proyecto */}
               <Image
@@ -43,13 +42,13 @@ export default function CaseStudies() {
                 alt={`Proyecto en el sector ${c.sector}`}
                 width={600}
                 height={300}
-                className="h-44 w-full object-cover opacity-90"
+                className="h-44 w-full object-cover"
               />
               <div className="p-6">
-                <span className="font-mono text-xs uppercase tracking-widest text-cyan">
+                <span className="font-mono text-xs uppercase tracking-widest text-electric">
                   {c.sector}
                 </span>
-                <p className="mt-2 text-base font-medium text-paper/85">
+                <p className="mt-2 text-base font-medium text-ink/80">
                   {c.result}
                 </p>
               </div>

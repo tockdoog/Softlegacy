@@ -1,7 +1,6 @@
 // Ruta del archivo: components/sections/Services.tsx
-// SECCIÓN 3 — NUESTROS SERVICIOS (versión futurista)
-// Objetivo: escaneable, poco texto, con ícono grande, brillo en hover y
-// aparición escalonada (stagger) al hacer scroll con Framer Motion.
+// SECCIÓN 3 — NUESTROS SERVICIOS. Tema claro, aparición escalonada
+// (stagger) al hacer scroll con Framer Motion.
 
 "use client";
 
@@ -27,11 +26,11 @@ const item = {
 
 export default function Services() {
   return (
-    <section id="servicios" className="relative bg-ink py-24">
+    <section id="servicios" className="relative bg-paper py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Qué hacemos</span>
-          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+          <h2 className="mt-4 font-display text-4xl font-bold text-ink jp-mark">
             Un equipo, todas las soluciones
           </h2>
         </div>
@@ -48,13 +47,13 @@ export default function Services() {
               key={s.title}
               variants={item}
               whileHover={{ y: -6 }}
-              className="glass-card glow-border rounded-2xl p-7"
+              className="glass-card glow-border rounded-2xl border border-ink/10 p-7"
             >
-              <span className="font-mono text-3xl text-cyan">{s.icon}</span>
-              <h3 className="mt-4 font-display text-lg font-semibold text-paper">
+              <span className="font-mono text-3xl text-electric">{s.icon}</span>
+              <h3 className="mt-4 font-display text-lg font-semibold text-ink">
                 {s.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-paper/55">
+              <p className="mt-2 text-sm leading-relaxed text-ink/60">
                 {s.text}
               </p>
             </motion.div>

@@ -1,5 +1,6 @@
 // Ruta del archivo: components/layout/Footer.tsx
-// Pie de página global, adaptado al tema oscuro futurista.
+// Pie de página global, tinta oscura intencional (contraste tipo sello
+// japonés frente al resto del sitio, predominantemente blanco).
 
 const COLUMNS = [
   { title: "Servicios", links: ["Software a la medida", "Ciberseguridad", "Videovigilancia", "Domótica", "Soporte"] },
@@ -22,7 +23,7 @@ export default function Footer() {
           </p>
           <div className="mt-6 space-y-2 text-sm text-paper/60">
             <p>Bogotá D.C., Colombia</p>
-            <p>contacto@softlegacy.com.co</p>
+            <p>softlegacytkd@gmail.com</p>
             <p>+57 300 000 0000</p>
           </div>
         </div>
@@ -33,7 +34,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2">
               {col.links.map((link) => (
                 <li key={link}>
-                  <span className="text-sm text-paper/50 transition-colors hover:text-cyan">
+                  <span className="text-sm text-paper/50 transition-colors hover:text-electric">
                     {link}
                   </span>
                 </li>
