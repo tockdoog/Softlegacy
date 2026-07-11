@@ -1,61 +1,59 @@
 // Ruta del archivo: components/sections/CaseStudies.tsx
-// SECCIÓN 8 — CASOS DE USO / PROYECTOS
-// Objetivo: mostrar resultados concretos (aunque sean ejemplos ilustrativos)
-// para reforzar credibilidad ante el visitante.
-// Ilustración sugerida: capturas de pantalla estilizadas de dashboards o
-// fotografías del sector del cliente (retail, salud, manufactura).
-// Animación recomendada: carrusel horizontal con snap-scroll.
+// SECCIÓN 8 — CASOS DE USO / PROYECTOS (versión futurista)
+// Objetivo: resultados concretos y breves, con imagen ilustrativa por caso.
+// Imágenes sugeridas en /public/images/case-*.jpg (capturas de dashboards
+// reales o fotos del sector del cliente).
+
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const CASES = [
-  {
-    sector: "Retail",
-    title: "Cadena de tiendas de ropa",
-    result: "Implementamos un POS conectado a un ERP central, reduciendo el tiempo de cierre de caja en 70%.",
-  },
-  {
-    sector: "Salud",
-    title: "Clínica ambulatoria",
-    result: "Sistema de historias clínicas a la medida con cifrado de datos y control de accesos por rol.",
-  },
-  {
-    sector: "Bodegas y logística",
-    title: "Centro de distribución",
-    result: "Videovigilancia con analítica de movimiento y automatización de control de acceso a zonas restringidas.",
-  },
-  {
-    sector: "Servicios",
-    title: "Firma de consultoría",
-    result: "CRM a la medida que unificó ventas y seguimiento de clientes en una sola plataforma.",
-  },
+  { sector: "Retail", result: "70% menos tiempo en cierre de caja.", image: "/images/case-retail.jpg" },
+  { sector: "Salud", result: "Historias clínicas cifradas por rol.", image: "/images/case-salud.jpg" },
+  { sector: "Logística", result: "Videovigilancia con analítica de movimiento.", image: "/images/case-logistica.jpg" },
+  { sector: "Servicios", result: "CRM que unificó ventas y seguimiento.", image: "/images/case-servicios.jpg" },
 ];
 
 export default function CaseStudies() {
   return (
-    <section id="casos" className="bg-paper py-24">
+    <section id="casos" className="bg-navy py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-2xl">
-          <span className="tag-mono text-navy">Casos de uso</span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">
-            Proyectos que ya están generando resultados
+        <div className="max-w-xl">
+          <span className="tag-mono">Casos de uso</span>
+          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+            Resultados, no promesas
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {CASES.map((c) => (
-            <div
-              key={c.title}
-              className="corner-card rounded-lg border border-ink/10 bg-paper-off p-7"
+        <div className="mt-14 grid gap-5 sm:grid-cols-2">
+          {CASES.map((c, i) => (
+            <motion.div
+              key={c.sector}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="glass-card glow-border overflow-hidden rounded-2xl"
             >
-              <span className="font-mono text-xs uppercase tracking-widest text-electric">
-                {c.sector}
-              </span>
-              <h3 className="mt-3 font-display text-lg font-semibold text-ink">
-                {c.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate">
-                {c.result}
-              </p>
-            </div>
+              {/* Reemplaza por una captura o foto real del proyecto */}
+              <Image
+                src={c.image}
+                alt={`Proyecto en el sector ${c.sector}`}
+                width={600}
+                height={300}
+                className="h-44 w-full object-cover opacity-90"
+              />
+              <div className="p-6">
+                <span className="font-mono text-xs uppercase tracking-widest text-cyan">
+                  {c.sector}
+                </span>
+                <p className="mt-2 text-base font-medium text-paper/85">
+                  {c.result}
+                </p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

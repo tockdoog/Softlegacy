@@ -1,62 +1,58 @@
 // Ruta del archivo: components/sections/About.tsx
-// SECCIÓN 2 — SOBRE SOFTLEGACY
-// Objetivo: responder "¿quiénes somos?" y transmitir cercanía y solidez.
-// Animación recomendada: revelado al hacer scroll (fade + leve desplazamiento).
-// Ilustración sugerida: fotografía/ilustración del equipo trabajando o un
-// mapa de Colombia con puntos de cobertura.
+// SECCIÓN 2 — SOBRE SOFTLEGACY (versión futurista, texto reducido)
+// Imagen sugerida en /public/images/about-team.jpg (equipo real trabajando).
+
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="nosotros" className="bg-paper py-24">
-      <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-2 lg:px-10">
-        <div>
-          <span className="tag-mono text-navy">Quiénes somos</span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">
-            Un equipo de tecnología, no un proveedor más
+    <section id="nosotros" className="bg-ink py-24">
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2 lg:px-10">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="glow-border relative overflow-hidden rounded-2xl"
+        >
+          {/* Reemplaza por una foto real del equipo u oficina */}
+          <Image
+            src="/images/about-team.jpg"
+            alt="Equipo de SoftLegacy"
+            width={600}
+            height={480}
+            className="h-[400px] w-full object-cover"
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="tag-mono">Quiénes somos</span>
+          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+            Un equipo, no un proveedor más
           </h2>
-          <p className="mt-6 text-base leading-relaxed text-slate">
-            SoftLegacy es una empresa colombiana de tecnología que acompaña a
-            negocios de todos los tamaños en su transformación digital.
-            Combinamos desarrollo de software, ciberseguridad, videovigilancia
-            y automatización en un solo equipo, para que no tengas que
-            coordinar cinco proveedores distintos.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-slate">
-            Nacimos con una idea simple: la tecnología debe ser una ventaja
-            competitiva, no un dolor de cabeza. Por eso diseñamos cada
-            solución a la medida del negocio, con procesos claros y soporte
-            real después de la entrega.
+          <p className="mt-5 max-w-md text-base text-paper/55">
+            Software, seguridad y automatización bajo un mismo techo.
           </p>
 
-          <div className="mt-10 grid grid-cols-2 gap-6">
-            <div className="corner-card border border-ink/10 p-5">
-              <p className="font-display text-3xl font-bold text-navy">+50</p>
-              <p className="mt-1 text-sm text-slate">Proyectos entregados</p>
+          <div className="mt-9 grid grid-cols-2 gap-4">
+            <div className="glass-card rounded-xl p-5">
+              <p className="font-display text-3xl font-bold text-cyan">+50</p>
+              <p className="mt-1 text-xs text-paper/50">Proyectos entregados</p>
             </div>
-            <div className="corner-card border border-ink/10 p-5">
-              <p className="font-display text-3xl font-bold text-navy">98%</p>
-              <p className="mt-1 text-sm text-slate">Clientes que renuevan soporte</p>
+            <div className="glass-card rounded-xl p-5">
+              <p className="font-display text-3xl font-bold text-cyan">98%</p>
+              <p className="mt-1 text-xs text-paper/50">Renuevan soporte</p>
             </div>
           </div>
-        </div>
-
-        {/* Misión y visión como panel lateral */}
-        <div className="space-y-6">
-          <div className="corner-card rounded-lg bg-navy p-8 text-paper">
-            <p className="tag-mono text-signal">Misión</p>
-            <p className="mt-3 text-lg leading-relaxed text-paper/85">
-              Impulsar el crecimiento de nuestros clientes con software y
-              seguridad confiables, diseñados a la medida de cada operación.
-            </p>
-          </div>
-          <div className="corner-card rounded-lg border border-ink/10 bg-paper-off p-8">
-            <p className="tag-mono text-navy">Visión</p>
-            <p className="mt-3 text-lg leading-relaxed text-slate">
-              Ser el aliado tecnológico de referencia para empresas
-              colombianas que buscan escalar de forma segura y automatizada.
-            </p>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

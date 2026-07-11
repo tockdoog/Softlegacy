@@ -1,55 +1,47 @@
 // Ruta del archivo: components/sections/Benefits.tsx
-// SECCIÓN 7 — BENEFICIOS DE TRABAJAR CON NOSOTROS
-// Objetivo: responder "¿por qué elegir SoftLegacy?" frente a otros proveedores.
-// Iconos sugeridos: candado (seguridad), reloj (tiempos), equipo (acompañamiento),
-// gráfico (escalabilidad).
-// Animación recomendada: contadores que suben (count-up) al entrar en pantalla.
+// SECCIÓN 7 — BENEFICIOS DE TRABAJAR CON NOSOTROS (versión futurista)
+// Objetivo: responder "por qué elegirnos" en tarjetas cortas con ícono
+// destacado y brillo de fondo por tarjeta.
+
+"use client";
+
+import { motion } from "framer-motion";
 
 const BENEFITS = [
-  {
-    icon: "⛨",
-    title: "Seguridad desde el diseño",
-    text: "Cada sistema se construye siguiendo buenas prácticas de seguridad, no como un añadido de último momento.",
-  },
-  {
-    icon: "◷",
-    title: "Cumplimiento de tiempos",
-    text: "Trabajamos con entregas parciales y fechas claras, para que siempre sepas en qué va tu proyecto.",
-  },
-  {
-    icon: "☍",
-    title: "Un solo equipo, todo integrado",
-    text: "Software, seguridad, cámaras y automatización coordinados entre sí, sin fricción entre proveedores.",
-  },
-  {
-    icon: "↗",
-    title: "Soluciones que escalan",
-    text: "Diseñamos pensando en el crecimiento: lo que hoy es una tienda, mañana puede ser una cadena.",
-  },
+  { icon: "⛨", title: "Seguridad desde el diseño" },
+  { icon: "◷", title: "Cumplimiento de tiempos" },
+  { icon: "☍", title: "Un solo equipo integrado" },
+  { icon: "↗", title: "Soluciones que escalan" },
 ];
 
 export default function Benefits() {
   return (
-    <section className="bg-navy py-24 text-paper">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-2xl">
-          <span className="tag-mono text-signal">Por qué SoftLegacy</span>
-          <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
-            La diferencia está en cómo trabajamos
+    <section className="relative overflow-hidden bg-ink py-24">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-glow opacity-50" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="max-w-xl">
+          <span className="tag-mono">Por qué SoftLegacy</span>
+          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+            La diferencia está en el detalle
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {BENEFITS.map((b) => (
-            <div key={b.title}>
-              <span className="font-mono text-2xl text-signal">{b.icon}</span>
-              <h3 className="mt-4 font-display text-base font-semibold">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {BENEFITS.map((b, i) => (
+            <motion.div
+              key={b.title}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              whileHover={{ y: -6 }}
+              className="glass-card glow-border rounded-2xl p-6 text-center"
+            >
+              <span className="font-mono text-3xl text-electric">{b.icon}</span>
+              <h3 className="mt-4 font-display text-sm font-semibold text-paper">
                 {b.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-paper/60">
-                {b.text}
-              </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

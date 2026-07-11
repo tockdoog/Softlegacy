@@ -1,75 +1,55 @@
 // Ruta del archivo: components/sections/Products.tsx
-// SECCIÓN 4 — PRODUCTOS Y SOLUCIONES QUE DESARROLLAMOS
-// Objetivo: mostrar de forma tangible qué tipo de sistemas construye
-// SoftLegacy, con un rango de inversión referencial en pesos colombianos
-// (COP) para calificar al visitante antes de que llegue al formulario.
-// Iconos sugeridos: carrito (POS), red/nodos (ERP), personas (CRM), globo (web).
-// Animación recomendada: tarjetas con efecto "hover lift" y borde que se ilumina.
+// SECCIÓN 4 — PRODUCTOS Y SOLUCIONES (versión futurista)
+// Objetivo: mostrar el rango de inversión en COP de forma directa, con
+// tarjetas que se iluminan al pasar el cursor. Precios referenciales.
+
+"use client";
+
+import { motion } from "framer-motion";
 
 const SOLUTIONS = [
-  {
-    tag: "POS",
-    title: "Sistemas de punto de venta",
-    text: "Software para ventas, inventario y facturación electrónica, adaptado a tiendas, restaurantes y comercio en general.",
-    price: "Desde $3.500.000 COP",
-  },
-  {
-    tag: "ERP",
-    title: "Sistemas ERP",
-    text: "Plataformas que integran inventario, compras, finanzas, nómina y producción en un solo lugar, con reportes en tiempo real.",
-    price: "Desde $12.000.000 COP",
-  },
-  {
-    tag: "CRM",
-    title: "Sistemas CRM",
-    text: "Gestión de clientes, oportunidades de venta y seguimiento comercial, con automatización de tareas repetitivas.",
-    price: "Desde $8.000.000 COP",
-  },
-  {
-    tag: "WEB",
-    title: "Aplicaciones y sistemas web a la medida",
-    text: "Portales, plataformas internas y aplicaciones a la medida, diseñadas desde cero según el flujo real de tu operación.",
-    price: "Desde $6.000.000 COP",
-  },
+  { tag: "POS", title: "Punto de venta", price: "Desde $3.500.000 COP" },
+  { tag: "ERP", title: "Sistema ERP", price: "Desde $12.000.000 COP" },
+  { tag: "CRM", title: "Sistema CRM", price: "Desde $8.000.000 COP" },
+  { tag: "WEB", title: "App a la medida", price: "Desde $6.000.000 COP" },
 ];
 
 export default function Products() {
   return (
-    <section id="soluciones" className="bg-ink py-24 text-paper">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-2xl">
+    <section id="soluciones" className="relative overflow-hidden bg-navy py-24">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-glow opacity-60" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="max-w-xl">
           <span className="tag-mono">Soluciones</span>
-          <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
-            Sistemas que construimos a la medida de tu operación
+          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+            Sistemas a tu medida
           </h2>
-          <p className="mt-4 text-base text-paper/60">
-            Los valores son referenciales en pesos colombianos (COP) y varían
-            según el alcance, los módulos e integraciones de cada proyecto.
-            El precio final se define en la fase de diagnóstico, sin costo.
+          <p className="mt-3 text-sm text-paper/50">
+            Valores referenciales en pesos colombianos (COP). Precio final en el diagnóstico gratuito.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SOLUTIONS.map((sol) => (
-            <div
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {SOLUTIONS.map((sol, i) => (
+            <motion.div
               key={sol.tag}
-              className="corner-card flex flex-col justify-between rounded-lg border border-white/10 bg-navy/30 p-6 transition-colors hover:border-signal/50"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{ y: -8 }}
+              className="glass-card glow-border flex flex-col justify-between rounded-2xl p-6"
             >
               <div>
-                <span className="font-mono text-xs tracking-widest text-signal">
+                <span className="font-mono text-xs tracking-widest text-electric">
                   {sol.tag}
                 </span>
-                <h3 className="mt-3 font-display text-lg font-semibold">
+                <h3 className="mt-3 font-display text-lg font-semibold text-paper">
                   {sol.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-paper/60">
-                  {sol.text}
-                </p>
               </div>
-              <p className="mt-6 font-mono text-sm text-electric-light">
-                {sol.price}
-              </p>
-            </div>
+              <p className="mt-8 font-mono text-sm text-cyan">{sol.price}</p>
+            </motion.div>
           ))}
         </div>
       </div>

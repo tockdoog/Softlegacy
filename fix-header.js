@@ -1,4 +1,10 @@
-"use client";
+// fix-header.js
+// Reescribe Header.tsx directamente desde Node, sin pasar por el portapapeles,
+// para eliminar cualquier posibilidad de caracteres invisibles.
+
+const fs = require("fs");
+
+const content = `"use client";
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -120,3 +126,7 @@ export default function Header() {
     </header>
   );
 }
+`;
+
+fs.writeFileSync("components/layout/Header.tsx", content, { encoding: "utf8" });
+console.log("Header.tsx reescrito correctamente.");

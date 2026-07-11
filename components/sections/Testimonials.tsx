@@ -1,59 +1,38 @@
 // Ruta del archivo: components/sections/Testimonials.tsx
-// SECCIÓN 9 — TESTIMONIOS (EJEMPLOS)
-// Objetivo: prueba social. IMPORTANTE: estos son testimonios de ejemplo;
-// deben reemplazarse por testimonios reales de clientes antes de publicar,
-// para no incurrir en publicidad engañosa.
-// Animación recomendada: carrusel automático con pausa al pasar el mouse.
+// SECCIÓN 9 — TESTIMONIOS (EJEMPLOS, versión futurista)
+// IMPORTANTE: reemplazar por testimonios reales antes de publicar (evitar
+// publicidad engañosa). Carrusel simple con desplazamiento horizontal y
+// snap-scroll nativo (sin JS adicional para el scroll, mejor rendimiento).
 
 const TESTIMONIALS = [
-  {
-    quote:
-      "El sistema que nos construyeron nos permitió controlar el inventario de las tres sedes desde un solo lugar. El soporte ha sido constante.",
-    author: "Gerente de operaciones",
-    company: "Cadena de retail (ejemplo)",
-  },
-  {
-    quote:
-      "Nos ayudaron a cerrar vulnerabilidades que ni sabíamos que teníamos. El acompañamiento fue claro y sin tecnicismos innecesarios.",
-    author: "Directora administrativa",
-    company: "Empresa de servicios (ejemplo)",
-  },
-  {
-    quote:
-      "La automatización de nuestra bodega redujo errores manuales y nos dio visibilidad en tiempo real de todo el proceso.",
-    author: "Jefe de logística",
-    company: "Centro de distribución (ejemplo)",
-  },
+  { quote: "Controlamos las tres sedes desde un solo sistema.", author: "Gerente de operaciones (ejemplo)" },
+  { quote: "Cerraron vulnerabilidades que no sabíamos que teníamos.", author: "Directora administrativa (ejemplo)" },
+  { quote: "La automatización redujo errores manuales en bodega.", author: "Jefe de logística (ejemplo)" },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="bg-paper-off py-24">
+    <section className="bg-ink py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-2xl">
-          <span className="tag-mono text-navy">Testimonios</span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">
-            Lo que dicen quienes ya confiaron en nosotros
+        <div className="max-w-xl">
+          <span className="tag-mono">Testimonios</span>
+          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+            Quienes ya confiaron en nosotros
           </h2>
-          <p className="mt-3 text-xs text-slate/70">
-            * Testimonios de ejemplo, con fines ilustrativos del formato.
-          </p>
+          <p className="mt-2 text-xs text-paper/40">* Ejemplos ilustrativos de formato.</p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
           {TESTIMONIALS.map((t) => (
             <div
               key={t.author}
-              className="corner-card rounded-lg border border-ink/10 bg-paper p-7"
+              className="glass-card glow-border w-[300px] shrink-0 snap-start rounded-2xl p-7"
             >
-              <p className="font-display text-3xl text-signal">“</p>
-              <p className="-mt-4 text-sm leading-relaxed text-ink/80">
+              <p className="font-display text-3xl text-electric">"</p>
+              <p className="-mt-3 text-sm leading-relaxed text-paper/75">
                 {t.quote}
               </p>
-              <p className="mt-6 text-sm font-semibold text-ink">
-                {t.author}
-              </p>
-              <p className="text-xs text-slate">{t.company}</p>
+              <p className="mt-6 text-xs font-medium text-cyan">{t.author}</p>
             </div>
           ))}
         </div>

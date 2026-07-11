@@ -1,82 +1,65 @@
 // Ruta del archivo: components/sections/Services.tsx
-// SECCIÓN 3 — NUESTROS SERVICIOS
-// Objetivo: responder "¿qué hacemos?" y "¿qué problemas resolvemos?" de
-// forma escaneable, en tarjetas con ícono, problema que resuelve y beneficio.
-// Iconos sugeridos: </> desarrollo, escudo ciberseguridad, cámara videovigilancia,
-// casa/chip domótica, engranaje consultoría, auriculares soporte.
-// Animación recomendada: aparición escalonada (stagger) de tarjetas al hacer scroll.
+// SECCIÓN 3 — NUESTROS SERVICIOS (versión futurista)
+// Objetivo: escaneable, poco texto, con ícono grande, brillo en hover y
+// aparición escalonada (stagger) al hacer scroll con Framer Motion.
+
+"use client";
+
+import { motion } from "framer-motion";
 
 const SERVICES = [
-  {
-    icon: "</>",
-    title: "Desarrollo de software a la medida",
-    problem: "Problema: procesos manuales, hojas de cálculo y sistemas que no se ajustan a tu operación.",
-    text: "Construimos aplicaciones web, sistemas administrativos y plataformas a la medida, diseñadas exactamente para cómo trabaja tu equipo.",
-  },
-  {
-    icon: "⛨",
-    title: "Ciberseguridad empresarial",
-    problem: "Problema: información sensible expuesta a filtraciones, fraude o ataques.",
-    text: "Evaluamos, protegemos y monitoreamos tu infraestructura digital para reducir el riesgo de ataques y cumplir buenas prácticas del sector.",
-  },
-  {
-    icon: "◎",
-    title: "Videovigilancia",
-    problem: "Problema: falta de control y evidencia sobre lo que ocurre en tus instalaciones.",
-    text: "Instalamos sistemas de cámaras de seguridad con monitoreo remoto, grabación en la nube y alertas en tiempo real.",
-  },
-  {
-    icon: "⌂",
-    title: "Domótica y automatización",
-    problem: "Problema: tiempo y energía perdidos en tareas y controles manuales.",
-    text: "Automatizamos hogares y negocios: iluminación, acceso, climatización y procesos operativos conectados desde una sola plataforma.",
-  },
-  {
-    icon: "✦",
-    title: "Consultoría tecnológica",
-    problem: "Problema: decisiones de tecnología tomadas sin una hoja de ruta clara.",
-    text: "Analizamos tu operación y te acompañamos a definir qué tecnología implementar, en qué orden y con qué inversión.",
-  },
-  {
-    icon: "↻",
-    title: "Mantenimiento y soporte",
-    problem: "Problema: sistemas que fallan y nadie responde a tiempo.",
-    text: "Damos mantenimiento preventivo y soporte continuo a tus sistemas, con tiempos de respuesta definidos por contrato.",
-  },
+  { icon: "</>", title: "Software a la medida", text: "Aplicaciones y sistemas diseñados para tu operación real." },
+  { icon: "⛨", title: "Ciberseguridad", text: "Protección activa de tu información y tu infraestructura." },
+  { icon: "◎", title: "Videovigilancia", text: "Cámaras con monitoreo remoto y alertas en tiempo real." },
+  { icon: "⌂", title: "Domótica", text: "Automatización de hogares y negocios, todo conectado." },
+  { icon: "✦", title: "Consultoría", text: "Hoja de ruta clara para decidir en qué invertir primero." },
+  { icon: "↻", title: "Soporte 24/7", text: "Mantenimiento continuo con tiempos de respuesta reales." },
 ];
+
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 export default function Services() {
   return (
-    <section id="servicios" className="bg-paper-off py-24">
+    <section id="servicios" className="relative bg-ink py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-2xl">
-          <span className="tag-mono text-navy">Qué hacemos</span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">
-            Servicios pensados para resolver problemas reales de tu negocio
+        <div className="max-w-xl">
+          <span className="tag-mono">Qué hacemos</span>
+          <h2 className="mt-4 font-display text-4xl font-bold text-paper">
+            Un equipo, todas las soluciones
           </h2>
-          <p className="mt-4 text-base text-slate">
-            No vendemos tecnología por vender: cada servicio nace de un
-            problema concreto que enfrentan las empresas todos los días.
-          </p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={container}
+          className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {SERVICES.map((s) => (
-            <div
+            <motion.div
               key={s.title}
-              className="corner-card group rounded-lg border border-ink/10 bg-paper p-7 transition-shadow hover:shadow-lg"
+              variants={item}
+              whileHover={{ y: -6 }}
+              className="glass-card glow-border rounded-2xl p-7"
             >
-              <span className="font-mono text-2xl text-electric">{s.icon}</span>
-              <h3 className="mt-4 font-display text-lg font-semibold text-ink">
+              <span className="font-mono text-3xl text-cyan">{s.icon}</span>
+              <h3 className="mt-4 font-display text-lg font-semibold text-paper">
                 {s.title}
               </h3>
-              <p className="mt-3 text-xs font-medium uppercase tracking-wide text-signal/80">
-                {s.problem}
+              <p className="mt-2 text-sm leading-relaxed text-paper/55">
+                {s.text}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-slate">{s.text}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

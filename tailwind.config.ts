@@ -1,72 +1,62 @@
 // Ruta del archivo: tailwind.config.ts
-// Define el sistema de diseño (tokens) que usa todo el sitio: paleta de colores,
-// tipografías y utilidades personalizadas de SoftLegacy.
+// Sistema de diseño futurista: fondo oscuro predominante, acentos de neón
+// (rojo eléctrico + cian), efectos de brillo (glow) y animaciones para
+// glassmorphism, degradados en movimiento y partículas.
 
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        // Paleta de marca: rojo + blanco (blanco predominante), inspirada en el
-        // sello "hanko" japonés (tinta roja sobre papel blanco) y el uso del
-        // rojo en torii/banderas: color de acento, nunca de fondo masivo.
-        ink: {
-          DEFAULT: "#141414", // negro tinta (sumi), para texto y paneles oscuros puntuales
-          soft: "#1D1414",
-        },
-        navy: {
-          DEFAULT: "#7A1220", // rojo oscuro "enji", para los pocos paneles oscuros (Hero, CTA)
-          light: "#8F1B29",
-        },
-        electric: {
-          DEFAULT: "#C8102E", // rojo "hinomaru", color primario de acento y botones
-          light: "#E23F55",
-        },
-        signal: {
-          DEFAULT: "#C8102E", // mismo rojo de sello, para destacar cifras y estados
-          soft: "#F3B5BE",
-        },
-        paper: {
-          DEFAULT: "#FFFFFF",
-          off: "#FAF7F5", // blanco cálido (papel washi), para secciones alternadas
-        },
-        slate: {
-          DEFAULT: "#5B5652", // gris cálido para texto secundario
-        },
+        // Fondo base: negro profundo con tinte azulado (no negro puro, evita
+        // sensación de "pantalla apagada")
+        ink: { DEFAULT: "#0A0B10", soft: "#12141C" },
+        navy: { DEFAULT: "#151827", light: "#1E2236" },
+        // Acento primario: rojo eléctrico de marca
+        electric: { DEFAULT: "#FF2D4D", light: "#FF5C77" },
+        // Acento secundario: cian, refuerza la sensación "tecnológica"
+        cyan: { DEFAULT: "#2DE0FF", soft: "#8FF0FF" },
+        signal: { DEFAULT: "#FF2D4D", soft: "#FFB5C0" },
+        paper: { DEFAULT: "#FFFFFF", off: "#F5F6FA" },
+        slate: { DEFAULT: "#8A8FA3" },
       },
       fontFamily: {
-        // Tipografía de titulares: geométrica y técnica (identidad "software/sistemas")
         display: ["var(--font-space-grotesk)", "sans-serif"],
-        // Tipografía de cuerpo: alta legibilidad
         body: ["var(--font-inter)", "sans-serif"],
-        // Tipografía utilitaria tipo consola, para etiquetas y datos (motivo "panel de estado")
         mono: ["var(--font-plex-mono)", "monospace"],
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+        "mesh-glow":
+          "radial-gradient(circle at 20% 20%, rgba(255,45,77,0.25), transparent 40%), radial-gradient(circle at 80% 60%, rgba(45,224,255,0.18), transparent 45%)",
       },
-      backgroundSize: {
-        grid: "40px 40px",
-      },
+      backgroundSize: { grid: "44px 44px" },
       keyframes: {
         scan: {
           "0%": { transform: "translateY(-100%)" },
           "100%": { transform: "translateY(100%)" },
         },
-        fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(16px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        floatY: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-14px)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.5" },
+          "50%": { opacity: "1" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       animation: {
         scan: "scan 3.5s linear infinite",
-        fadeUp: "fadeUp 0.6s ease-out forwards",
+        floatY: "floatY 6s ease-in-out infinite",
+        pulseGlow: "pulseGlow 2.4s ease-in-out infinite",
+        marquee: "marquee 28s linear infinite",
       },
     },
   },
