@@ -1,7 +1,7 @@
 // Ruta del archivo: app/layout.tsx
 // Layout raíz que envuelve todas las páginas del sitio. Define las fuentes,
 // los metadatos SEO por defecto (título, descripción, Open Graph) y monta
-// el Header y el Footer globales.
+// el Header y el Footer globales sobre un fondo blanco predominante.
 
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
@@ -9,8 +9,8 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-// Carga de tipografías optimizadas por Next.js (self-hosted, sin llamadas externas
-// en tiempo de ejecución = mejor rendimiento, privacidad y puntaje SEO)
+// Carga de tipografías optimizadas por Next.js (self-hosted, sin llamadas
+// externas en tiempo de ejecución = mejor rendimiento, privacidad y SEO)
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="es-CO">
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable}`}
+        className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} bg-paper`}
       >
         {/* Encabezado fijo con navegación principal, visible en todas las páginas */}
         <Header />

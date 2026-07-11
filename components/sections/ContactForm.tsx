@@ -1,5 +1,6 @@
 // Ruta del archivo: components/sections/ContactForm.tsx
-// SECCIÓN 12 — FORMULARIO DE CONTACTO. Tema claro (ya lo tenías así).
+// SECCIÓN 12 — FORMULARIO DE CONTACTO. Estilo minimalista premium: campos
+// con bordes sutiles, foco en rojo, tarjeta blanca con sombra suave.
 // Incluye validación en el cliente (experiencia de usuario) y un campo
 // honeypot oculto para bots; la validación real y definitiva ocurre en el
 // servidor (app/api/contact/route.ts), nunca se confía solo en el cliente.
@@ -58,20 +59,23 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="bg-paper-off py-24">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:px-10">
+    <section id="contacto" className="bg-paper-off py-28">
+      <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:px-10">
         {/* Columna de contexto */}
         <ScrollReveal>
           <span className="tag-mono">Contáctanos</span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl jp-mark">
-            Cuéntanos qué necesita tu negocio
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate">
+          <div className="mt-4 flex items-center gap-3">
+            <span className="divider-accent" />
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              Cuéntanos qué necesita tu negocio
+            </h2>
+          </div>
+          <p className="mt-5 max-w-md text-base leading-relaxed text-ink/55">
             Escríbenos y un asesor te contactará en menos de 24 horas hábiles
             con un diagnóstico inicial, sin costo ni compromiso.
           </p>
 
-          <div className="mt-8 space-y-3 text-sm text-slate">
+          <div className="mt-8 space-y-3 text-sm text-ink/60">
             <p>✉️ softlegacytkd@gmail.com</p>
             <p>📞 +57 300 000 0000</p>
             <p>📍 Bogotá D.C., Colombia</p>
@@ -82,7 +86,7 @@ export default function ContactForm() {
         <ScrollReveal delay={0.15}>
           <form
             onSubmit={manejarEnvio}
-            className="space-y-5 rounded-lg border border-ink/10 bg-paper p-8"
+            className="card-premium space-y-5 p-8"
             noValidate
           >
             <div>
@@ -97,7 +101,7 @@ export default function ContactForm() {
                 minLength={2}
                 maxLength={100}
                 autoComplete="name"
-                className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
+                className="mt-1.5 w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-electric"
               />
             </div>
 
@@ -113,7 +117,7 @@ export default function ContactForm() {
                   required
                   maxLength={150}
                   autoComplete="email"
-                  className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
+                  className="mt-1.5 w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-electric"
                 />
               </div>
               <div>
@@ -126,7 +130,7 @@ export default function ContactForm() {
                   type="tel"
                   maxLength={20}
                   autoComplete="tel"
-                  className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
+                  className="mt-1.5 w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-electric"
                 />
               </div>
             </div>
@@ -140,7 +144,7 @@ export default function ContactForm() {
                 name="servicio"
                 required
                 defaultValue=""
-                className="mt-1.5 w-full rounded-md border border-ink/15 bg-paper px-4 py-2.5 text-sm outline-none focus:border-electric"
+                className="mt-1.5 w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-electric"
               >
                 <option value="" disabled>
                   Selecciona un servicio
@@ -164,7 +168,7 @@ export default function ContactForm() {
                 minLength={10}
                 maxLength={2000}
                 rows={4}
-                className="mt-1.5 w-full rounded-md border border-ink/15 px-4 py-2.5 text-sm outline-none focus:border-electric"
+                className="mt-1.5 w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-electric"
               />
             </div>
 
@@ -185,7 +189,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={estado === "enviando"}
-              className="w-full rounded-md bg-electric px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-electric-light disabled:opacity-60"
+              className="btn-primary w-full disabled:opacity-60"
             >
               {estado === "enviando" ? "Enviando..." : "Enviar mensaje"}
             </button>

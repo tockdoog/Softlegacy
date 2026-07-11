@@ -1,6 +1,6 @@
 // Ruta del archivo: app/page.tsx
 // Página principal (Home) del sitio de SoftLegacy. Ensambla, en orden, las
-// 13 secciones definidas en la estrategia de contenido: Hero, Sobre nosotros,
+// secciones definidas en la estrategia de contenido: Hero, Sobre nosotros,
 // Servicios, Soluciones, Proceso, Tecnologías, Beneficios, Casos, Testimonios,
 // FAQ, CTA y Formulario de contacto (el Header y Footer viven en el layout).
 

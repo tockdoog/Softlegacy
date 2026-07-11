@@ -1,8 +1,9 @@
 // Ruta del archivo: tailwind.config.ts
-// Sistema de diseño: blanco predominante, rojo como acento secundario,
-// estética japonesa (washi, sumi, líneas finas) combinada con elementos
-// tecnológicos (grid, glow, scan). Mismos nombres de color que antes para
-// no romper componentes existentes; solo cambian los valores.
+// Sistema de diseño: minimalismo premium inspirado en Apple.
+// Blanco predominante, rojo como acento secundario y discreto.
+// Se conservan los nombres de color originales para no romper componentes
+// existentes; solo se ajustan los valores y se añaden sombras/tipografía.
+// Se restaura la animación "marquee" (cinta de tecnologías en TechStack.tsx).
 
 import type { Config } from "tailwindcss";
 
@@ -11,61 +12,69 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // "paper": blanco washi, ahora es el fondo predominante del sitio
-        paper: { DEFAULT: "#FFFFFF", off: "#FAFAF7", muted: "#F1EFEA" },
-        // "ink" (tinta sumi): antes era el fondo oscuro global; ahora es el
-        // color de texto principal y el fondo de las pocas secciones oscuras
-        // (footer, banner de CTA) para dar contraste dramático tipo sumi-e.
-        ink: { DEFAULT: "#16171C", soft: "#2B2D36" },
-        navy: { DEFAULT: "#101114", light: "#1B1C21" },
-        // "electric": acento rojo (aka), ahora es rojo secundario tipo hinomaru
-        electric: { DEFAULT: "#E11D2E", light: "#FF4D63" },
-        // "cyan" se mantiene definido por compatibilidad con componentes que
-        // aún no revisamos, pero ya no es protagonista de la paleta.
+        // Blanco puro y variaciones casi imperceptibles para fondos alternos
+        paper: { DEFAULT: "#FFFFFF", off: "#FBFBFD", muted: "#F5F5F7" },
+        // Negro suave estilo Apple (#1d1d1f) en vez de negro puro: texto principal
+        ink: { DEFAULT: "#1D1D1F", soft: "#3A3A3C" },
+        // Fondo oscuro reservado solo para footer / CTA / TechStack
+        navy: { DEFAULT: "#0B0B0D", light: "#1D1D1F" },
+        // Rojo como único acento secundario del sitio
+        electric: { DEFAULT: "#E11D2E", light: "#FF3B30" },
+        // Mantenido por compatibilidad, sin protagonismo en la paleta actual
         cyan: { DEFAULT: "#2DE0FF", soft: "#8FF0FF" },
         signal: { DEFAULT: "#E11D2E", soft: "#FFB5C0" },
-        slate: { DEFAULT: "#6B6E7A" },
+        // Gris neutro estilo Apple para texto secundario
+        slate: { DEFAULT: "#6E6E73", light: "#86868B" },
       },
       fontFamily: {
-        display: ["var(--font-space-grotesk)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "-apple-system", "sans-serif"],
+        body: ["var(--font-inter)", "-apple-system", "sans-serif"],
         mono: ["var(--font-plex-mono)", "monospace"],
       },
-      backgroundImage: {
-        // Grid técnico, ahora en tono oscuro muy sutil sobre fondo blanco
-        "grid-pattern":
-          "linear-gradient(rgba(22,23,28,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(22,23,28,0.05) 1px, transparent 1px)",
-        // Resplandor sutil en rojo, para usar sobre fondo oscuro (CTA/footer)
-        "mesh-glow":
-          "radial-gradient(circle at 20% 20%, rgba(225,29,46,0.25), transparent 40%), radial-gradient(circle at 80% 60%, rgba(225,29,46,0.12), transparent 45%)",
-        // Patrón "seigaiha" (olas japonesas), decorativo, muy sutil
-        "seigaiha":
-          "radial-gradient(circle at 0 50%, transparent 20px, rgba(22,23,28,0.04) 21px, rgba(22,23,28,0.04) 22px, transparent 23px)",
+      // Radios de borde más generosos, estilo tarjetas de iOS/macOS
+      borderRadius: {
+        "2xl": "1.25rem",
+        "3xl": "1.75rem",
+        "4xl": "2.25rem",
       },
-      backgroundSize: { grid: "44px 44px", seigaiha: "60px 30px" },
+      // Sombras suaves reutilizables en toda la interfaz
+      boxShadow: {
+        soft: "0 1px 2px rgba(22,23,28,0.04), 0 8px 24px rgba(22,23,28,0.04)",
+        elevated: "0 2px 4px rgba(22,23,28,0.06), 0 16px 40px rgba(22,23,28,0.08)",
+        accent: "0 8px 24px rgba(225,29,46,0.18)",
+      },
+      backgroundImage: {
+        // Grid técnico casi invisible, solo como textura de fondo muy sutil
+        "grid-pattern":
+          "linear-gradient(rgba(22,23,28,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(22,23,28,0.04) 1px, transparent 1px)",
+        // Resplandor rojo muy suave, reservado para fondos oscuros (CTA/footer)
+        "mesh-glow":
+          "radial-gradient(circle at 20% 20%, rgba(225,29,46,0.22), transparent 42%), radial-gradient(circle at 80% 60%, rgba(225,29,46,0.10), transparent 45%)",
+      },
+      backgroundSize: { grid: "48px 48px" },
       keyframes: {
-        scan: {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(100%)" },
-        },
         floatY: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-14px)" },
+          "50%": { transform: "translateY(-12px)" },
         },
-        pulseGlow: {
-          "0%, 100%": { opacity: "0.5" },
-          "50%": { opacity: "1" },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        // Desplazamiento horizontal continuo para la cinta de tecnologías
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
       },
       animation: {
-        scan: "scan 3.5s linear infinite",
         floatY: "floatY 6s ease-in-out infinite",
-        pulseGlow: "pulseGlow 2.4s ease-in-out infinite",
-        marquee: "marquee 28s linear infinite",
+        fadeInUp: "fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) both",
+        marquee: "marquee 30s linear infinite",
+      },
+      // Curva de transición suave tipo Apple para usar en cualquier componente
+      transitionTimingFunction: {
+        apple: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
   },

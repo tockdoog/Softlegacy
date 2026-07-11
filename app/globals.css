@@ -1,25 +1,32 @@
 /* Ruta del archivo: app/globals.css */
-/* Estilos base globales: tema claro (blanco predominante), acentos en rojo,
-   estética japonesa-tecnológica (líneas finas, glow sutil, glassmorphism
-   claro) y accesibilidad (foco visible, reduced-motion). */
+/* Estilos base globales del sitio.
+   Filosofía de diseño: minimalismo premium inspirado en Apple.
+   - Blanco (paper) como fondo predominante.
+   - Rojo (electric) como acento secundario, usado con moderación.
+   - Tipografía nítida, espaciado amplio, sombras suaves (no glow agresivo).
+   - Accesibilidad: foco visible y soporte a "reduced motion". */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Scroll suave al navegar entre anclas (#servicios, #contacto, etc.) */
 html {
   scroll-behavior: smooth;
 }
 
+/* Fondo blanco predominante y texto "ink" (casi negro, estilo Apple #1d1d1f) */
 body {
-  /* Fondo blanco predominante, texto tinta (ink) oscuro */
   @apply bg-paper text-ink font-body antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Foco de teclado siempre visible (accesibilidad) */
+/* Anillo de foco visible y elegante para navegación por teclado (accesibilidad) */
 :focus-visible {
   outline: 2px solid theme("colors.electric.DEFAULT");
   outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* Respeta la preferencia del usuario de reducir animaciones (accesibilidad) */
@@ -32,49 +39,73 @@ body {
   }
 }
 
-/* Tarjeta de vidrio clara: para usar sobre fondo blanco o sobre secciones oscuras */
+/* Tarjeta estilo Apple: fondo blanco puro, borde casi imperceptible,
+   sombra muy suave que se intensifica ligeramente al pasar el mouse */
+.card-premium {
+  @apply bg-white border border-ink/[0.06] rounded-3xl;
+  box-shadow: 0 1px 2px rgba(22, 23, 28, 0.04), 0 8px 24px rgba(22, 23, 28, 0.04);
+  transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-premium:hover {
+  box-shadow: 0 2px 4px rgba(22, 23, 28, 0.06), 0 16px 40px rgba(22, 23, 28, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Tarjeta de vidrio clara: para el header fijo con blur al hacer scroll */
 .glass-card {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(22, 23, 28, 0.08);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(22, 23, 28, 0.06);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
-/* Variante de tarjeta de vidrio para fondos oscuros (footer, CTA) */
+/* Variante oscura de vidrio, reservada solo para el footer o CTA final,
+   manteniendo el resto del sitio predominantemente blanco */
 .glass-card-dark {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(16px);
+  background: rgba(22, 23, 28, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
 }
 
-/* Borde que brilla en rojo al pasar el mouse (acento tecnológico) */
-.glow-border {
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+/* Botón primario: rojo sólido, sombra suave, leve elevación al pasar el mouse */
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-electric
+         text-white font-medium px-7 py-3.5 transition-all duration-300;
+  box-shadow: 0 4px 14px rgba(225, 29, 46, 0.25);
 }
-.glow-border:hover {
-  border-color: rgba(225, 29, 46, 0.5);
-  box-shadow: 0 0 30px rgba(225, 29, 46, 0.12);
+.btn-primary:hover {
+  background-color: theme("colors.electric.light");
+  box-shadow: 0 6px 20px rgba(225, 29, 46, 0.32);
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(0);
 }
 
-/* Etiqueta tipo "eyebrow" en fuente monoespaciada, acento rojo */
+/* Botón secundario: contorno sutil sobre fondo blanco, estilo Apple "ghost" */
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-full bg-transparent
+         text-ink font-medium px-7 py-3.5 border border-ink/15 transition-all duration-300;
+}
+.btn-secondary:hover {
+  @apply border-ink/30 bg-ink/[0.03];
+}
+
+/* Etiqueta tipo "eyebrow": pequeña, en mayúsculas, con acento rojo puntual */
 .tag-mono {
-  @apply font-mono text-xs tracking-widest uppercase text-electric;
+  @apply font-mono text-xs tracking-[0.2em] uppercase text-electric font-medium;
 }
 
-/* Texto con degradado corto: de tinta a rojo, para titulares */
+/* Texto con degradado corto de tinta a rojo, reservado para titulares clave */
 .text-gradient {
-  background: linear-gradient(90deg, #16171c 0%, #e11d2e 100%);
+  background: linear-gradient(100deg, #16171c 45%, #e11d2e 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Línea decorativa vertical tipo "sello" japonés, usada junto a títulos */
-.jp-mark::before {
-  content: "";
-  display: inline-block;
-  width: 3px;
-  height: 1.1em;
-  margin-right: 0.5rem;
-  vertical-align: -0.15em;
-  background: theme("colors.electric.DEFAULT");
+/* Separador decorativo minimalista: línea corta en rojo junto a subtítulos */
+.divider-accent {
+  @apply w-10 h-[3px] bg-electric rounded-full;
 }

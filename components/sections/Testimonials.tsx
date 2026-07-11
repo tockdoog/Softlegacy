@@ -1,5 +1,5 @@
 // Ruta del archivo: components/sections/Testimonials.tsx
-// SECCIÓN 9 — TESTIMONIOS (EJEMPLOS). Tema claro.
+// SECCIÓN 9 — TESTIMONIOS (EJEMPLOS). Estilo minimalista premium.
 // IMPORTANTE: reemplazar por testimonios reales antes de publicar (evitar
 // publicidad engañosa). Carrusel simple con desplazamiento horizontal y
 // snap-scroll nativo (sin JS adicional para el scroll, mejor rendimiento).
@@ -14,24 +14,27 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-paper py-24">
+    <section className="bg-paper py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <ScrollReveal className="max-w-xl">
           <span className="tag-mono">Testimonios</span>
-          <h2 className="mt-4 font-display text-4xl font-bold text-ink jp-mark">
-            Quienes ya confiaron en nosotros
-          </h2>
-          <p className="mt-2 text-xs text-ink/40">* Ejemplos ilustrativos de formato.</p>
+          <div className="mt-4 flex items-center gap-3">
+            <span className="divider-accent" />
+            <h2 className="font-display text-4xl font-semibold tracking-tight text-ink">
+              Quienes ya confiaron en nosotros
+            </h2>
+          </div>
+          <p className="mt-3 text-xs text-ink/35">* Ejemplos ilustrativos de formato.</p>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.15} className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
+        <ScrollReveal delay={0.15} className="mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
           {TESTIMONIALS.map((t) => (
             <div
               key={t.author}
-              className="glass-card glow-border w-[300px] shrink-0 snap-start rounded-2xl border border-ink/10 p-7"
+              className="card-premium w-[300px] shrink-0 snap-start p-7"
             >
-              <p className="font-display text-3xl text-electric">"</p>
-              <p className="-mt-3 text-sm leading-relaxed text-ink/75">
+              <p className="font-display text-3xl leading-none text-electric">"</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink/70">
                 {t.quote}
               </p>
               <p className="mt-6 text-xs font-medium text-electric">{t.author}</p>
