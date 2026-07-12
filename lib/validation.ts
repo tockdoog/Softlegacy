@@ -2,6 +2,10 @@
 // Define y valida la forma de los datos que llegan desde el formulario de
 // contacto, usando Zod. Esto evita procesar datos malformados o maliciosos
 // antes de que lleguen a cualquier lógica de negocio (defensa en profundidad).
+// Se agregó el campo "tipoNegocio" para soportar el nuevo formulario
+// multi-negocio, sin restringir su valor a una lista cerrada en el backend
+// (la lista visible vive en el componente, aquí solo validamos longitud y
+// formato para evitar abuso).
 
 import { z } from "zod";
 
@@ -24,6 +28,11 @@ export const contactSchema = z.object({
     .regex(/^[0-9+\s()-]{7,20}$/, "El número de teléfono no es válido")
     .optional()
     .or(z.literal("")),
+  tipoNegocio: z
+    .string()
+    .trim()
+    .min(2, "Selecciona un tipo de negocio")
+    .max(80, "Valor de tipo de negocio inválido"),
   servicio: z
     .string()
     .trim()

@@ -2,6 +2,8 @@
 // SECCIÓN 2 — SOBRE SOFTLEGACY. Estilo minimalista premium: imagen con
 // esquinas suaves y sombra discreta, tarjetas de métricas limpias.
 // Imagen sugerida en /public/images/about-team.jpg (equipo real trabajando).
+// Texto ajustado para reflejar que atendemos cualquier tipo de negocio y el
+// modelo de suscripción mensual.
 
 "use client";
 
@@ -45,18 +47,20 @@ export default function About() {
             </h2>
           </div>
           <p className="mt-5 max-w-md text-base leading-relaxed text-ink/55">
-            Software, seguridad y automatización bajo un mismo techo.
+            Software, seguridad y automatización por mensualidad, para
+            tiendas, restaurantes, gimnasios y cualquier negocio que quiera
+            crecer con tecnología.
           </p>
 
           {/* Tarjetas de métricas, estilo Apple: fondo blanco, sombra suave */}
           <div className="mt-10 grid grid-cols-2 gap-4">
             <div className="card-premium p-6">
               <p className="font-display text-3xl font-semibold text-electric">+50</p>
-              <p className="mt-1 text-xs font-medium text-ink/50">Proyectos entregados</p>
+              <p className="mt-1 text-xs font-medium text-ink/50">Negocios activos</p>
             </div>
             <div className="card-premium p-6">
               <p className="font-display text-3xl font-semibold text-electric">98%</p>
-              <p className="mt-1 text-xs font-medium text-ink/50">Renuevan soporte</p>
+              <p className="mt-1 text-xs font-medium text-ink/50">Renuevan su suscripción</p>
             </div>
           </div>
         </motion.div>

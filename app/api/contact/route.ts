@@ -6,6 +6,9 @@
 // 3) Verifica un campo "honeypot" para descartar bots simples.
 // 4) Nunca expone detalles internos del error al cliente.
 // 5) Envía el mensaje por correo real usando Resend hacia CONTACT_TO_EMAIL.
+// Se agregó el campo "tipoNegocio" al cuerpo del correo, para que el asesor
+// sepa de qué tipo de negocio viene el contacto (tienda, restaurante,
+// gimnasio, etc.) sin necesidad de preguntarlo de nuevo.
 
 import { NextRequest, NextResponse } from "next/server";
 import { contactSchema, sanitizeText } from "@/lib/validation";
@@ -65,6 +68,7 @@ export async function POST(request: NextRequest) {
     nombre: sanitizeText(datos.nombre),
     correo: sanitizeText(datos.correo),
     telefono: datos.telefono ? sanitizeText(datos.telefono) : "",
+    tipoNegocio: sanitizeText(datos.tipoNegocio),
     servicio: sanitizeText(datos.servicio),
     mensaje: sanitizeText(datos.mensaje),
   };
@@ -100,6 +104,7 @@ export async function POST(request: NextRequest) {
           `Nombre: ${datosSeguros.nombre}`,
           `Correo: ${datosSeguros.correo}`,
           `Telefono: ${datosSeguros.telefono || "No proporcionado"}`,
+          `Tipo de negocio: ${datosSeguros.tipoNegocio}`,
           `Servicio: ${datosSeguros.servicio}`,
           `Mensaje: ${datosSeguros.mensaje}`,
         ].join("\n"),

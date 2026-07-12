@@ -3,7 +3,8 @@
 // fondo blanco, tipografía muy grande, un solo acento de color rojo detrás
 // del panel visual. Soporta video de fondo en /public/videos/hero-loop.mp4
 // (se usa automáticamente si existe) con imagen de respaldo en
-// /public/images/hero-tech.jpg.
+// /public/images/hero-tech.jpg. Mensaje ajustado a modelo de suscripción
+// mensual (SaaS) para cualquier tipo de negocio, sin atarse a un nicho.
 
 "use client";
 
@@ -40,7 +41,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-ink/[0.08] bg-paper-off px-4 py-1.5"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-electric" />
-            <span className="tag-mono">Tecnología · Seguridad · Automatización</span>
+            <span className="tag-mono">Software · Seguridad · Suscripción mensual</span>
           </motion.div>
 
           <motion.h1
@@ -50,9 +51,9 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-7 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4.5rem]"
           >
-            El futuro de tu
+            Tecnología y seguridad
             <br />
-            <span className="text-gradient">negocio, hoy.</span>
+            <span className="text-gradient">por mensualidad.</span>
           </motion.h1>
 
           <motion.p
@@ -62,7 +63,9 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-6 max-w-md text-lg leading-relaxed text-ink/55"
           >
-            Software, ciberseguridad y automatización en un solo equipo.
+            POS, páginas web, CRM, automatizaciones, cámaras, ciberseguridad y
+            domótica, todo en un solo plan mensual. Para tiendas, restaurantes,
+            gimnasios y cualquier tipo de negocio.
           </motion.p>
 
           <motion.div
@@ -75,8 +78,8 @@ export default function Hero() {
             <a href="#contacto" className="btn-primary">
               Diagnóstico gratuito
             </a>
-            <a href="#servicios" className="btn-secondary">
-              Ver servicios
+            <a href="#soluciones" className="btn-secondary">
+              Ver planes
             </a>
           </motion.div>
         </div>
@@ -111,7 +114,7 @@ export default function Hero() {
             className="card-premium absolute -bottom-7 -left-7 px-7 py-5"
           >
             <p className="font-display text-3xl font-semibold text-electric">+50</p>
-            <p className="mt-0.5 text-xs font-medium text-ink/50">Proyectos entregados</p>
+            <p className="mt-0.5 text-xs font-medium text-ink/50">Negocios activos</p>
           </motion.div>
         </motion.div>
       </div>

@@ -2,7 +2,8 @@
 // SECCIÓN 11 — LLAMADO A LA ACCIÓN. Sección oscura (tinta) intencional para
 // dar contraste dramático frente al resto del sitio, predominantemente
 // blanco: mucho blanco + un bloque negro con acento rojo puntual.
-// Se anima al entrar en el viewport.
+// Se anima al entrar en el viewport. Texto ajustado para reflejar que el
+// diagnóstico termina en una propuesta de plan mensual.
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -17,7 +18,8 @@ export default function CTA() {
           ¿Listo para el cambio?
         </h2>
         <p className="mt-4 text-base leading-relaxed text-white/55">
-          Diagnóstico gratuito de 30 minutos, en pesos colombianos, sin letra pequeña.
+          Diagnóstico gratuito de 30 minutos. Te armamos un plan mensual en
+          pesos colombianos, sin letra pequeña.
         </p>
         <a href="#contacto" className="btn-primary mt-9 inline-flex !px-8 !py-4">
           Quiero mi diagnóstico

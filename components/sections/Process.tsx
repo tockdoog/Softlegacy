@@ -1,18 +1,20 @@
 // Ruta del archivo: components/sections/Process.tsx
 // SECCIÓN 5 — PROCESO DE TRABAJO. Estilo minimalista premium: numeración en
 // círculo blanco con acento rojo, línea conectora sutil en escritorio.
+// Paso 2 ajustado para reflejar que la propuesta incluye un valor mensual
+// (modelo de suscripción), no un pago único.
 
 "use client";
 
 import { motion } from "framer-motion";
 
 const STEPS = [
-  { n: "01", title: "Diagnóstico", text: "Entendemos tu operación y objetivos, sin costo." },
-  { n: "02", title: "Propuesta", text: "Alcance, tecnología e inversión en COP, claros." },
+  { n: "01", title: "Diagnóstico", text: "Entendemos tu negocio y qué necesita, sin costo." },
+  { n: "02", title: "Propuesta", text: "Alcance, tecnología y mensualidad en COP, claros." },
   { n: "03", title: "Desarrollo", text: "Construcción por ciclos cortos, con entregas parciales." },
   { n: "04", title: "Pruebas", text: "Validación funcional y de seguridad antes de salir a producción." },
-  { n: "05", title: "Implementación", text: "Despliegue, capacitación y puesta en marcha." },
-  { n: "06", title: "Soporte", text: "Mantenimiento y mejoras continuas post-entrega." },
+  { n: "05", title: "Implementación", text: "Instalación, capacitación y puesta en marcha." },
+  { n: "06", title: "Soporte", text: "Mantenimiento y mejoras continuas, incluidos en tu plan." },
 ];
 
 export default function Process() {

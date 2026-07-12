@@ -1,18 +1,21 @@
 // Ruta del archivo: components/layout/Header.tsx
-// Encabezado fijo con navegacion principal. Estilo minimalista premium:
-// fondo blanco con blur al hacer scroll, tipografia nitida, acento rojo
-// solo en el punto de estado y el boton principal. Componente de cliente
-// porque usa estado (menu movil) y eventos del navegador (scroll).
+// Encabezado fijo con navegación principal. Estilo minimalista premium:
+// fondo blanco con blur al hacer scroll, tipografía nítida, acento rojo
+// solo en el punto de estado y el botón principal. Incluye el logo real de
+// SoftLegacy junto al nombre de la marca. Componente de cliente porque usa
+// estado (menú móvil) y eventos del navegador (scroll). El CTA principal se
+// alinea con el mensaje del Hero (diagnóstico gratuito hacia suscripción).
 
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "Nosotros", href: "#nosotros" },
   { label: "Servicios", href: "#servicios" },
-  { label: "Soluciones", href: "#soluciones" },
+  { label: "Planes", href: "#soluciones" },
   { label: "Proceso", href: "#proceso" },
   { label: "Casos", href: "#casos" },
 ];
@@ -48,11 +51,14 @@ export default function Header() {
   return (
     <header className={headerClass}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <a href="#inicio" className="font-display text-lg font-semibold tracking-tight text-ink">
-          Soft<span className="text-electric">Legacy</span>
+        <a href="#inicio" className="flex items-center gap-2.5">
+          <Image src="/images/logo.png" alt="Logo SoftLegacy" width={32} height={32} priority className="h-8 w-8 object-contain" />
+          <span className="font-display text-lg font-semibold tracking-tight text-ink">
+            Soft<span className="text-electric">Legacy</span>
+          </span>
         </a>
 
-        <nav aria-label="Navegacion principal" className="hidden items-center gap-9 lg:flex">
+        <nav aria-label="Navegación principal" className="hidden items-center gap-9 lg:flex">
           {NAV_LINKS.map(function (link) {
             return (
               <a key={link.href} href={link.href} className="group relative text-[13px] font-medium text-ink/70 transition-colors hover:text-ink">
@@ -64,12 +70,12 @@ export default function Header() {
         </nav>
 
         <a href="#contacto" className="btn-primary hidden !px-5 !py-2.5 text-[13px] lg:inline-flex">
-          Cotiza tu proyecto
+          Diagnóstico gratuito
         </a>
 
         <button
           type="button"
-          aria-label={open ? "Cerrar menu de navegacion" : "Abrir menu de navegacion"}
+          aria-label={open ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
           aria-expanded={open}
           className="flex flex-col gap-1.5 lg:hidden"
           onClick={function () {
@@ -85,7 +91,7 @@ export default function Header() {
       <AnimatePresence>
         {open && (
           <motion.nav
-            aria-label="Navegacion movil"
+            aria-label="Navegación móvil"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -101,7 +107,7 @@ export default function Header() {
                 );
               })}
               <a href="#contacto" onClick={function () { setOpen(false); }} className="btn-primary mt-3 w-full">
-                Cotiza tu proyecto
+                Diagnóstico gratuito
               </a>
             </div>
           </motion.nav>

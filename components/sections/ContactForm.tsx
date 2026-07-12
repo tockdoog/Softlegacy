@@ -4,20 +4,40 @@
 // Incluye validación en el cliente (experiencia de usuario) y un campo
 // honeypot oculto para bots; la validación real y definitiva ocurre en el
 // servidor (app/api/contact/route.ts), nunca se confía solo en el cliente.
-// Animado al entrar en el viewport con ScrollReveal.
+// Se agregó el campo "tipo de negocio" para calificar el lead sin atarlo a
+// un solo nicho, y se actualizó la lista de servicios al nuevo catálogo
+// mezclado de software y seguridad. Animado al entrar en el viewport con
+// ScrollReveal.
 
 "use client";
 
 import { useState, FormEvent } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
+// Tipos de negocio, deliberadamente genéricos: no limitamos la oferta a un
+// solo sector. "Otro" cubre cualquier caso no listado.
+const TIPOS_NEGOCIO = [
+  "Tienda o retail",
+  "Restaurante",
+  "Gimnasio",
+  "Oficina o servicios profesionales",
+  "Hogar",
+  "Otro",
+];
+
+// Catálogo de servicios y planes, alineado con components/sections/Services.tsx
+// y components/sections/Products.tsx.
 const SERVICIOS = [
-  "Desarrollo de software a la medida",
-  "Ciberseguridad empresarial",
-  "Videovigilancia",
-  "Domótica y automatización",
-  "Consultoría tecnológica",
-  "Mantenimiento y soporte",
+  "Software a la medida (POS, web, CRM)",
+  "Ciberseguridad",
+  "Cámaras y videovigilancia",
+  "Hacking ético",
+  "Automatizaciones",
+  "Domótica e IA para el hogar",
+  "Cerraduras inteligentes",
+  "Audio y conectores",
+  "Un plan integral (software + seguridad)",
+  "No estoy seguro, quiero asesoría",
 ];
 
 type Estado = "idle" | "enviando" | "exito" | "error";
@@ -72,7 +92,8 @@ export default function ContactForm() {
           </div>
           <p className="mt-5 max-w-md text-base leading-relaxed text-ink/55">
             Escríbenos y un asesor te contactará en menos de 24 horas hábiles
-            con un diagnóstico inicial, sin costo ni compromiso.
+            con un diagnóstico inicial y una propuesta de plan mensual, sin
+            costo ni compromiso.
           </p>
 
           <div className="mt-8 space-y-3 text-sm text-ink/60">
@@ -135,26 +156,50 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div>
-              <label htmlFor="servicio" className="text-sm font-medium text-ink">
-                Servicio de interés
-              </label>
-              <select
-                id="servicio"
-                name="servicio"
-                required
-                defaultValue=""
-                className="mt-1.5 w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-electric"
-              >
-                <option value="" disabled>
-                  Selecciona un servicio
-                </option>
-                {SERVICIOS.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label htmlFor="tipoNegocio" className="text-sm font-medium text-ink">
+                  Tipo de negocio
+                </label>
+                <select
+                  id="tipoNegocio"
+                  name="tipoNegocio"
+                  required
+                  defaultValue=""
+                  className="mt-1.5 w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-electric"
+                >
+                  <option value="" disabled>
+                    Selecciona una opción
                   </option>
-                ))}
-              </select>
+                  {TIPOS_NEGOCIO.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="servicio" className="text-sm font-medium text-ink">
+                  Servicio de interés
+                </label>
+                <select
+                  id="servicio"
+                  name="servicio"
+                  required
+                  defaultValue=""
+                  className="mt-1.5 w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-electric"
+                >
+                  <option value="" disabled>
+                    Selecciona un servicio
+                  </option>
+                  {SERVICIOS.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             <div>

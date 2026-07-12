@@ -1,15 +1,16 @@
 // Ruta del archivo: components/sections/FAQ.tsx
 // SECCIÓN 10 — PREGUNTAS FRECUENTES. Estilo minimalista premium. Se usa
 // <details>/<summary> nativo por accesibilidad y rendimiento (no requiere
-// JavaScript adicional).
+// JavaScript adicional). Preguntas ajustadas al modelo de suscripción
+// mensual y a que no hay un solo tipo de negocio o industria objetivo.
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const FAQS = [
-  { q: "¿Cuánto cuesta un sistema a la medida?", a: "Desde $3.500.000 COP. El valor exacto se define en el diagnóstico gratuito." },
-  { q: "¿Cuánto tiempo toma un proyecto?", a: "Entre 3 semanas y 4 meses, según el alcance definido en la propuesta." },
-  { q: "¿Ofrecen soporte después de la entrega?", a: "Sí, incluimos garantía y planes de mantenimiento mensual." },
-  { q: "¿Trabajan con cualquier sector?", a: "Sí, no estamos limitados a un solo tipo de industria." },
+  { q: "¿Cómo funciona el cobro?", a: "Por mensualidad, no por pago único. Planes desde $250.000 COP/mes, según lo que necesite tu negocio." },
+  { q: "¿Puedo cambiar de plan más adelante?", a: "Sí, tu plan se ajusta cuando tu negocio crece o cambian tus necesidades." },
+  { q: "¿Cuánto tiempo toma la implementación inicial?", a: "Entre 1 y 4 semanas, según el alcance definido en la propuesta." },
+  { q: "¿Trabajan con cualquier tipo de negocio?", a: "Sí: tiendas, restaurantes, gimnasios, oficinas y cualquier negocio que necesite software o seguridad." },
   { q: "¿Cómo protegen mi información?", a: "Cifrado, control de accesos, respaldos y monitoreo continuo." },
 ];
 

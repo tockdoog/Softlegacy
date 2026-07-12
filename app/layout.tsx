@@ -2,6 +2,8 @@
 // Layout raíz que envuelve todas las páginas del sitio. Define las fuentes,
 // los metadatos SEO por defecto (título, descripción, Open Graph) y monta
 // el Header y el Footer globales sobre un fondo blanco predominante.
+// Metadatos actualizados al nuevo enfoque: software + seguridad por
+// mensualidad, para cualquier tipo de negocio (no solo un nicho).
 
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
@@ -32,18 +34,20 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.softlegacy.com.co"),
   title: {
-    default: "SoftLegacy | Software a la medida, ciberseguridad y automatización",
+    default: "SoftLegacy | Software y seguridad por mensualidad para tu negocio",
     template: "%s | SoftLegacy",
   },
   description:
-    "SoftLegacy desarrolla software a la medida, sistemas ERP, CRM y POS, servicios de ciberseguridad, videovigilancia y domótica para empresas en Colombia. Tecnología confiable para hacer crecer tu negocio.",
+    "SoftLegacy ofrece software a la medida (POS, web, CRM, automatizaciones) y servicios de seguridad (ciberseguridad, hacking ético, cámaras, domótica, cerraduras inteligentes) por mensualidad, para tiendas, restaurantes, gimnasios y cualquier negocio en Colombia.",
   keywords: [
-    "desarrollo de software Colombia",
+    "software por suscripción Colombia",
+    "POS CRM automatizaciones",
     "ciberseguridad empresarial",
-    "sistemas ERP CRM POS",
-    "videovigilancia empresarial",
-    "domótica y automatización",
-    "consultoría tecnológica",
+    "hacking ético",
+    "instalación de cámaras",
+    "domótica e inteligencia artificial para el hogar",
+    "cerraduras inteligentes",
+    "tecnología para negocios Colombia",
   ],
   authors: [{ name: "SoftLegacy" }],
   openGraph: {
@@ -51,16 +55,16 @@ export const metadata: Metadata = {
     locale: "es_CO",
     url: "https://www.softlegacy.com.co",
     siteName: "SoftLegacy",
-    title: "SoftLegacy | Software a la medida, ciberseguridad y automatización",
+    title: "SoftLegacy | Software y seguridad por mensualidad para tu negocio",
     description:
-      "Desarrollamos software, protegemos tu infraestructura y automatizamos tu negocio. Tecnología confiable, hecha en Colombia.",
+      "Software a la medida, ciberseguridad, cámaras y domótica en un solo plan mensual. Para cualquier tipo de negocio en Colombia.",
     images: ["/og-image.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SoftLegacy | Tecnología confiable para tu empresa",
+    title: "SoftLegacy | Tecnología y seguridad por mensualidad",
     description:
-      "Software a la medida, ciberseguridad, videovigilancia y automatización para negocios en Colombia.",
+      "Software, ciberseguridad, cámaras y domótica para tiendas, restaurantes, gimnasios y cualquier negocio en Colombia.",
   },
   robots: {
     index: true,

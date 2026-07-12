@@ -1,17 +1,18 @@
 // Ruta del archivo: components/sections/Benefits.tsx
 // SECCIÓN 7 — BENEFICIOS DE TRABAJAR CON NOSOTROS. Estilo minimalista
 // premium: tarjetas blancas con sombra suave, ícono en rojo como único
-// acento de color, sin resplandores de fondo llamativos.
+// acento de color. Beneficios enfocados en el modelo de suscripción
+// mensual, sin importar el tipo de negocio.
 
 "use client";
 
 import { motion } from "framer-motion";
 
 const BENEFITS = [
+  { icon: "◒", title: "Sin gran inversión inicial" },
   { icon: "⛨", title: "Seguridad desde el diseño" },
-  { icon: "◷", title: "Cumplimiento de tiempos" },
   { icon: "☍", title: "Un solo equipo integrado" },
-  { icon: "↗", title: "Soluciones que escalan" },
+  { icon: "↗", title: "Tu plan crece con tu negocio" },
 ];
 
 export default function Benefits() {
@@ -26,6 +27,10 @@ export default function Benefits() {
               La diferencia está en el detalle
             </h2>
           </div>
+          <p className="mt-4 text-sm text-ink/45">
+            Ya sea una tienda, un restaurante, un gimnasio o cualquier otro
+            negocio: el plan se adapta a ti, no al revés.
+          </p>
         </div>
 
         {/* Grid de tarjetas, animación escalonada al entrar en pantalla */}

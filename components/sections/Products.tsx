@@ -1,17 +1,39 @@
 // Ruta del archivo: components/sections/Products.tsx
-// SECCIÓN 4 — PRODUCTOS Y SOLUCIONES. Estilo minimalista premium: tarjetas
-// blancas con sombra suave, tipografía clara. Precios en pesos colombianos
-// (COP), referenciales.
+// SECCIÓN 4 — PLANES MENSUALES. Estilo minimalista premium: tarjetas
+// blancas con sombra suave, tipografía clara. Modelo de suscripción (SaaS):
+// se cobra por mensualidad, no por pago único. Precios en pesos colombianos
+// (COP) como rangos referenciales, ya que el valor final es negociable
+// según el alcance de cada cliente.
 
 "use client";
 
 import { motion } from "framer-motion";
 
-const SOLUTIONS = [
-  { tag: "POS", title: "Punto de venta", price: "Desde $3.500.000 COP" },
-  { tag: "ERP", title: "Sistema ERP", price: "Desde $12.000.000 COP" },
-  { tag: "CRM", title: "Sistema CRM", price: "Desde $8.000.000 COP" },
-  { tag: "WEB", title: "App a la medida", price: "Desde $6.000.000 COP" },
+const PLANS = [
+  {
+    tag: "ESENCIAL",
+    title: "Presencia digital",
+    price: "Desde $250.000 COP/mes",
+    text: "Página web o POS básico, con soporte incluido.",
+  },
+  {
+    tag: "NEGOCIO",
+    title: "Gestión integral",
+    price: "Desde $600.000 COP/mes",
+    text: "CRM, automatizaciones y soporte prioritario.",
+  },
+  {
+    tag: "SEGURIDAD",
+    title: "Protección activa",
+    price: "Desde $450.000 COP/mes",
+    text: "Cámaras, monitoreo y ciberseguridad básica.",
+  },
+  {
+    tag: "INTEGRAL",
+    title: "Todo en uno",
+    price: "Desde $1.200.000 COP/mes",
+    text: "Software, automatización y seguridad combinados.",
+  },
 ];
 
 export default function Products() {
@@ -19,22 +41,24 @@ export default function Products() {
     <section id="soluciones" className="bg-paper-off py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
-          <span className="tag-mono">Soluciones</span>
+          <span className="tag-mono">Planes</span>
           <div className="mt-4 flex items-center gap-3">
             <span className="divider-accent" />
             <h2 className="font-display text-4xl font-semibold tracking-tight text-ink">
-              Sistemas a tu medida
+              Un plan para cada negocio
             </h2>
           </div>
           <p className="mt-4 text-sm text-ink/45">
-            Valores referenciales en pesos colombianos (COP). Precio final en el diagnóstico gratuito.
+            Valores referenciales en pesos colombianos (COP), facturados por
+            mensualidad. Se ajustan según lo que necesite tu negocio, en el
+            diagnóstico gratuito.
           </p>
         </div>
 
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {SOLUTIONS.map((sol, i) => (
+          {PLANS.map((plan, i) => (
             <motion.div
-              key={sol.tag}
+              key={plan.tag}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -43,13 +67,16 @@ export default function Products() {
             >
               <div>
                 <span className="font-mono text-xs tracking-widest text-electric">
-                  {sol.tag}
+                  {plan.tag}
                 </span>
                 <h3 className="mt-3 font-display text-lg font-semibold text-ink">
-                  {sol.title}
+                  {plan.title}
                 </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/55">
+                  {plan.text}
+                </p>
               </div>
-              <p className="mt-10 font-mono text-sm text-ink/60">{sol.price}</p>
+              <p className="mt-10 font-mono text-sm text-ink/60">{plan.price}</p>
             </motion.div>
           ))}
         </div>
