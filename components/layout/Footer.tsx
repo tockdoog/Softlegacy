@@ -1,10 +1,11 @@
 // Ruta del archivo: components/layout/Footer.tsx
 // Pie de página global, fondo oscuro intencional. Incluye el logo real de
-// SoftLegacy, columnas de navegación y, ahora, los enlaces a redes sociales
+// SoftLegacy, columnas de navegación y los enlaces a redes sociales
 // (Instagram, Facebook, YouTube, TikTok). Los íconos son formas genéricas
 // dibujadas a mano en SVG (no son los logos oficiales de cada marca), para
 // evitar el uso de propiedad intelectual de terceros.
 
+// Columnas de enlaces del pie de página, agrupadas por categoría.
 const COLUMNS = [
   {
     title: "Servicios",
@@ -20,6 +21,7 @@ const COLUMNS = [
   },
 ];
 
+// Mapa de texto de enlace -> ancla de destino dentro de la página.
 const COLUMN_HREFS: Record<string, string> = {
   "Software a la medida": "#servicios",
   Ciberseguridad: "#servicios",
@@ -81,6 +83,7 @@ function SocialIcon({ name }: { name: string }) {
   );
 }
 
+// Componente principal del pie de página, usado en app/layout.tsx.
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -111,7 +114,7 @@ export default function Footer() {
           {/* Enlaces a redes sociales */}
           <div className="mt-6 flex items-center gap-3">
             {SOCIALS.map((s) => (
-              
+              <a
                 key={s.name}
                 href={s.href}
                 target="_blank"
