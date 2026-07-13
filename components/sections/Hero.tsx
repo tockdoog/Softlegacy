@@ -41,7 +41,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-ink/[0.08] bg-paper-off px-4 py-1.5"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-electric" />
-            <span className="tag-mono">Software · Seguridad · Suscripción mensual</span>
+            <span className="tag-mono">Software · Seguridad · Suscripciones</span>
           </motion.div>
 
           <motion.h1
@@ -51,9 +51,8 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-7 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4.5rem]"
           >
-            Tecnología y seguridad
+            Tecnología y seguridad.
             <br />
-            <span className="text-gradient">por mensualidad.</span>
           </motion.h1>
 
           <motion.p

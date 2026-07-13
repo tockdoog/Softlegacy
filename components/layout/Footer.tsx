@@ -98,8 +98,7 @@ export default function Footer() {
             </p>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/45">
-            Software, seguridad y automatización por mensualidad, para
-            cualquier tipo de negocio.
+            Software, seguridad y automatización, para cualquier tipo de negocio.
           </p>
           <div className="mt-6 space-y-2 text-sm text-white/55">
             <p>Bogotá D.C., Colombia</p>
@@ -108,7 +107,7 @@ export default function Footer() {
                 softlegacytkd@gmail.com
               </a>
             </p>
-            <p>+57 300 000 0000</p>
+            <p>+57 313 264 2055</p>
           </div>
 
           {/* Enlaces a redes sociales */}
@@ -148,7 +147,7 @@ export default function Footer() {
 
       <div className="border-t border-white/[0.08] px-6 py-6 lg:px-10">
         <p className="text-center text-xs text-white/35">
-          &copy; {year} SoftLegacy S.A.S. - Bogotá, Colombia - Precios en pesos colombianos (COP).
+          &copy; {year} SoftLegacy S.A.S. - Bogotá, Colombia.
         </p>
       </div>
     </footer>

@@ -98,7 +98,7 @@ export default function ContactForm() {
 
           <div className="mt-8 space-y-3 text-sm text-ink/60">
             <p>✉️ softlegacytkd@gmail.com</p>
-            <p>📞 +57 300 000 0000</p>
+            <p>📞 +57 313 264 2055</p>
             <p>📍 Bogotá D.C., Colombia</p>
           </div>
         </ScrollReveal>

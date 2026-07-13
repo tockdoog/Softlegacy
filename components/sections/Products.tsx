@@ -13,26 +13,26 @@ const PLANS = [
   {
     tag: "ESENCIAL",
     title: "Presencia digital",
-    price: "Desde $250.000 COP/mes",
+    price: "Desde $60.000 COP/mes",
     text: "Página web o POS básico, con soporte incluido.",
   },
   {
     tag: "NEGOCIO",
     title: "Gestión integral",
-    price: "Desde $600.000 COP/mes",
+    price: "Desde $120.000 COP/mes",
     text: "CRM, automatizaciones y soporte prioritario.",
   },
   {
     tag: "SEGURIDAD",
     title: "Protección activa",
-    price: "Desde $450.000 COP/mes",
+    price: "Desde $200.000 COP",
     text: "Cámaras, monitoreo y ciberseguridad básica.",
   },
   {
     tag: "INTEGRAL",
-    title: "Todo en uno",
-    price: "Desde $1.200.000 COP/mes",
-    text: "Software, automatización y seguridad combinados.",
+    title: "Software personalizado",
+    price: "Dependiendo de la necesidad",
+    text: "Software, automatización y seguridad, etc...",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function Products() {
             </h2>
           </div>
           <p className="mt-4 text-sm text-ink/45">
-            Valores referenciales en pesos colombianos (COP), facturados por
+            Valores referenciales facturados por
             mensualidad. Se ajustan según lo que necesite tu negocio, en el
             diagnóstico gratuito.
           </p>

@@ -16,8 +16,6 @@ const SERVICES = [
   { icon: "⚿", title: "Hacking ético", text: "Pruebas de intrusión controladas para encontrar fallas antes que otros." },
   { icon: "↻", title: "Automatizaciones", text: "Procesos repetitivos resueltos, de ventas a atención al cliente." },
   { icon: "⌂", title: "Domótica e IA para el hogar", text: "Casas y negocios conectados, controlados desde un solo lugar." },
-  { icon: "⚷", title: "Cerraduras inteligentes", text: "Control de acceso remoto, sin llaves físicas que perder." },
-  { icon: "♫", title: "Audio y conectores", text: "Bafles, redes y conectividad integrada a tu espacio." },
   { icon: "✆", title: "Soporte 24/7", text: "Mantenimiento continuo con tiempos de respuesta reales." },
 ];
 

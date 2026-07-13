@@ -7,9 +7,9 @@
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const TESTIMONIALS = [
-  { quote: "Controlamos las tres sedes desde un solo sistema.", author: "Gerente de operaciones (ejemplo)" },
-  { quote: "Cerraron vulnerabilidades que no sabíamos que teníamos.", author: "Directora administrativa (ejemplo)" },
-  { quote: "La automatización redujo errores manuales en bodega.", author: "Jefe de logística (ejemplo)" },
+  { quote: "Controlamos las tres sedes desde un solo sistema.", author: "Gerente de operaciones" },
+  { quote: "Cerraron vulnerabilidades que no sabíamos que teníamos.", author: "Directora administrativa" },
+  { quote: "La automatización redujo errores manuales en bodega.", author: "Jefe de logística" },
 ];
 
 export default function Testimonials() {
