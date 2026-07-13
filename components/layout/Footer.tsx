@@ -41,10 +41,10 @@ const COLUMN_HREFS: Record<string, string> = {
 // Enlaces a redes sociales. Reemplaza estas URLs por las cuentas reales
 // de SoftLegacy cuando estén disponibles.
 const SOCIALS = [
-  { name: "Instagram", href: "https://instagram.com/softlegacy" },
-  { name: "Facebook", href: "https://facebook.com/softlegacy" },
-  { name: "YouTube", href: "https://youtube.com/@softlegacy" },
-  { name: "TikTok", href: "https://tiktok.com/@softlegacy" },
+  { name: "Instagram", href: "https://www.instagram.com/softlegacytkd" },
+  { name: "Facebook", href: "https://www.facebook.com/people/SoftLegacy-TKD/61588315582304" },
+  { name: "YouTube", href: "https://www.youtube.com/@SoftLegacy" },
+  { name: "TikTok", href: "https://www.tiktok.com/@softlegacy19" },
 ];
 
 // Ícono genérico por red social, dibujado en SVG plano (sin usar el logo

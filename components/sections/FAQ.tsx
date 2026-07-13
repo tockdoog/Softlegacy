@@ -7,7 +7,7 @@
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const FAQS = [
-  { q: "¿Cómo funciona el cobro?", a: "Por mensualidad, no por pago único. Planes desde $250.000 COP/mes, según lo que necesite tu negocio." },
+  { q: "¿Cómo funciona el cobro?", a: "Por mensualidad, no por pago único. Planes desde $70.000 COP/mes, según lo que necesite tu negocio." },
   { q: "¿Puedo cambiar de plan más adelante?", a: "Sí, tu plan se ajusta cuando tu negocio crece o cambian tus necesidades." },
   { q: "¿Cuánto tiempo toma la implementación inicial?", a: "Entre 1 y 4 semanas, según el alcance definido en la propuesta." },
   { q: "¿Trabajan con cualquier tipo de negocio?", a: "Sí: tiendas, restaurantes, gimnasios, oficinas y cualquier negocio que necesite software o seguridad." },
