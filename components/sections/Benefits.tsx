@@ -3,6 +3,9 @@
 // premium: tarjetas blancas con sombra suave, ícono en rojo como único
 // acento de color. Beneficios enfocados en el modelo de suscripción
 // mensual, sin importar el tipo de negocio.
+//
+// Cambio de esta versión: se reduce el padding vertical de la sección
+// (py-28 -> py-20) para bajar la altura total de la página.
 
 "use client";
 
@@ -17,7 +20,7 @@ const BENEFITS = [
 
 export default function Benefits() {
   return (
-    <section className="bg-paper-off py-28">
+    <section className="bg-paper-off py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Por qué SoftLegacy</span>

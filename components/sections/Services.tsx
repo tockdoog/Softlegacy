@@ -4,6 +4,9 @@
 // (stagger) al hacer scroll con Framer Motion. El catálogo mezcla a
 // propósito software y seguridad como una sola oferta ("soluciones para tu
 // negocio"), sin separarlos en dos categorías distintas.
+//
+// Cambio de esta versión: se reduce el padding vertical de la sección
+// (py-28 -> py-20) para bajar la altura total de la página.
 
 "use client";
 
@@ -32,7 +35,7 @@ const item = {
 
 export default function Services() {
   return (
-    <section id="servicios" className="bg-paper py-28">
+    <section id="servicios" className="bg-paper py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Qué hacemos</span>

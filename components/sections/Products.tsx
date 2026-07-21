@@ -4,6 +4,9 @@
 // se cobra por mensualidad, no por pago único. Precios en pesos colombianos
 // (COP) como rangos referenciales, ya que el valor final es negociable
 // según el alcance de cada cliente.
+//
+// Cambio de esta versión: se reduce el padding vertical de la sección
+// (py-28 -> py-20) para bajar la altura total de la página.
 
 "use client";
 
@@ -38,7 +41,7 @@ const PLANS = [
 
 export default function Products() {
   return (
-    <section id="soluciones" className="bg-paper-off py-28">
+    <section id="soluciones" className="bg-paper-off py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Planes</span>

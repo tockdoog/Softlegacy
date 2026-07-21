@@ -3,6 +3,13 @@
 // <details>/<summary> nativo por accesibilidad y rendimiento (no requiere
 // JavaScript adicional). Preguntas ajustadas al modelo de suscripción
 // mensual y a que no hay un solo tipo de negocio o industria objetivo.
+//
+// Cambios de esta versión (reducción de scroll):
+// 1) Se reduce el padding vertical de la sección (py-28 -> py-20).
+// 2) Se agrega el atributo "name" compartido a cada <details>, lo que
+//    activa el comportamiento nativo de acordeón exclusivo del navegador:
+//    al abrir una pregunta, las demás se cierran automáticamente y la
+//    página no crece en altura sin control si el usuario abre varias.
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -16,7 +23,7 @@ const FAQS = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="bg-paper-off py-28">
+    <section id="faq" className="bg-paper-off py-20">
       <div className="mx-auto max-w-3xl px-6 lg:px-10">
         <ScrollReveal className="text-center">
           <span className="tag-mono">Preguntas frecuentes</span>
@@ -28,10 +35,13 @@ export default function FAQ() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.15} className="mt-14">
+        <ScrollReveal delay={0.15} className="mt-12">
           <div className="card-premium divide-y divide-ink/[0.06] !rounded-2xl px-2">
             {FAQS.map((item) => (
-              <details key={item.q} className="group px-5 py-5">
+              // El atributo "name" agrupa los <details>: el navegador
+              // cierra automáticamente las demás preguntas al abrir una,
+              // evitando que la sección crezca sin control en altura.
+              <details key={item.q} name="faq-group" className="group px-5 py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between font-display text-base font-medium text-ink">
                   {item.q}
                   <span className="ml-4 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-electric/10 font-mono text-sm text-electric transition-transform duration-300 group-open:rotate-45">

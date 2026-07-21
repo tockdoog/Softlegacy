@@ -5,6 +5,13 @@
 // tus capturas reales antes de publicar. Casos ajustados para mostrar
 // variedad de negocios y mezcla de software y seguridad, sin quedar atados
 // a un solo sector.
+//
+// Cambios de esta versión (reducción de scroll):
+// 1) Se reduce el padding vertical de la sección (py-28 -> py-20).
+// 2) Se reemplaza la grilla vertical (grid sm:grid-cols-2) por un carrusel
+//    horizontal con snap-scroll nativo, igual que Testimonials.tsx. Esto
+//    evita que los 4 casos apilen altura extra en pantallas medianas y
+//    mantiene consistencia de patrón de interacción en toda la página.
 
 "use client";
 
@@ -28,7 +35,7 @@ const CASES: CaseItem[] = [
 
 export default function CaseStudies() {
   return (
-    <section id="casos" className="bg-paper py-28">
+    <section id="casos" className="bg-paper py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Casos de uso</span>
@@ -40,7 +47,9 @@ export default function CaseStudies() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2">
+        {/* Carrusel horizontal con snap-scroll nativo: mismo patrón que
+            Testimonials.tsx, reduce la altura total de la sección */}
+        <div className="mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
           {CASES.map((c, i) => (
             <motion.div
               key={c.sector}
@@ -48,7 +57,7 @@ export default function CaseStudies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="card-premium overflow-hidden"
+              className="card-premium w-[300px] shrink-0 snap-start overflow-hidden"
             >
               {/* Solo imagen fija: foto real del negocio usando el sistema */}
               <div className="relative h-44 w-full bg-paper-muted">
@@ -56,7 +65,7 @@ export default function CaseStudies() {
                   src={c.image}
                   alt={"Proyecto: " + c.sector}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="300px"
                   className="object-cover"
                 />
               </div>

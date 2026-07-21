@@ -4,12 +4,18 @@
 // el Header y el Footer globales sobre un fondo blanco predominante.
 // Metadatos actualizados al nuevo enfoque: software + seguridad por
 // mensualidad, para cualquier tipo de negocio (no solo un nicho).
+//
+// Cambio de esta versión: se monta QuickJumpFAB (botón flotante de salto
+// rápido) fuera de <main>, al mismo nivel que Header/Footer, para que
+// aparezca sobre cualquier contenido de la página sin afectar el flujo
+// normal del documento (position: fixed se define dentro del componente).
 
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import QuickJumpFAB from "@/components/ui/QuickJumpFAB";
 
 // Carga de tipografías optimizadas por Next.js (self-hosted, sin llamadas
 // externas en tiempo de ejecución = mejor rendimiento, privacidad y SEO)
@@ -87,6 +93,10 @@ export default function RootLayout({
         <main>{children}</main>
         {/* Pie de página global con datos de contacto, mapa del sitio y legales */}
         <Footer />
+        {/* Botón flotante de salto rápido: visible en todas las páginas tras
+            hacer scroll, permite ir directo a Servicios, Planes, Casos o
+            Contacto sin desplazamiento manual */}
+        <QuickJumpFAB />
       </body>
     </html>
   );

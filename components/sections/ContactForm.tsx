@@ -8,6 +8,11 @@
 // un solo nicho, y se actualizó la lista de servicios al nuevo catálogo
 // mezclado de software y seguridad. Animado al entrar en el viewport con
 // ScrollReveal.
+//
+// Cambio de esta versión: se reduce el padding vertical de la sección
+// (py-28 -> py-20) para bajar la altura total de la página. Es la última
+// sección antes del Footer, por lo que también ayuda a acortar el
+// recorrido final del usuario hasta el pie de página.
 
 "use client";
 
@@ -79,7 +84,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="bg-paper-off py-28">
+    <section id="contacto" className="bg-paper-off py-20">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:px-10">
         {/* Columna de contexto */}
         <ScrollReveal>

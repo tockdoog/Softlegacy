@@ -5,6 +5,13 @@
 // (se usa automáticamente si existe) con imagen de respaldo en
 // /public/images/hero-tech.jpg. Mensaje ajustado a modelo de suscripción
 // mensual (SaaS) para cualquier tipo de negocio, sin atarse a un nicho.
+//
+// Cambios de esta versión (reducción de scroll percibido):
+// 1) Se reduce el padding vertical del Hero para que más contenido de las
+//    secciones siguientes sea visible sin scroll adicional.
+// 2) Se agrega un panel de "salto rápido" (quick jump) con enlaces directos
+//    a Servicios, Planes, Casos de éxito y Contacto, para que el usuario
+//    elija su ruta desde el primer segundo en vez de scrollear a ciegas.
 
 "use client";
 
@@ -20,11 +27,20 @@ const fadeUp = {
   }),
 };
 
+// Enlaces del panel de salto rápido: ids confirmados contra el scrollspy
+// del Header (nosotros, servicios, soluciones, proceso, casos, contacto).
+const QUICK_JUMP_LINKS = [
+  { label: "Servicios", href: "#servicios" },
+  { label: "Planes", href: "#soluciones" },
+  { label: "Casos de éxito", href: "#casos" },
+  { label: "Contacto", href: "#contacto" },
+];
+
 export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-paper pt-36 pb-24 lg:pt-44 lg:pb-32"
+      className="relative overflow-hidden bg-paper pt-28 pb-16 lg:pt-32 lg:pb-20"
     >
       {/* Único acento visual de fondo: resplandor rojo muy suave, discreto,
           nunca protagonista sobre el blanco */}
@@ -81,6 +97,44 @@ export default function Hero() {
               Ver planes
             </a>
           </motion.div>
+
+          {/* Panel de salto rápido: evita que el usuario tenga que
+              scrollear "a ciegas" para encontrar la sección que busca */}
+          <motion.nav
+            aria-label="Navegación rápida del Hero"
+            initial="hidden"
+            animate="visible"
+            custom={4}
+            variants={fadeUp}
+            className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/[0.06] pt-6"
+          >
+            <span className="tag-mono !text-ink/40">Ir directo a</span>
+            {QUICK_JUMP_LINKS.map(function (link) {
+              return (
+                
+                  key={link.href}
+                  href={link.href}
+                  className="group inline-flex items-center gap-1 text-[13px] font-medium text-ink/65 transition-colors hover:text-electric"
+                >
+                  {link.label}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 12 12"
+                    className="h-3 w-3 -rotate-90 transition-transform duration-300 group-hover:translate-y-0.5"
+                  >
+                    <path
+                      d="M2 4l4 4 4-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              );
+            })}
+          </motion.nav>
         </div>
 
         {/* Columna visual: video (si existe) o imagen + tarjeta flotante */}

@@ -10,6 +10,13 @@
 // Nota de rendimiento: mantén los clips de la fila inferior cortos
 // (3 a 6 segundos) y livianos (ideal < 2 MB cada uno), ya que varios se
 // reproducen en simultáneo al cargar la sección.
+//
+// Cambio de esta versión (reducción de scroll):
+// 1) Se reduce el padding vertical de la sección (py-28 -> py-20).
+// 2) Se reduce la altura del panel grande destacado (h-[460px]/h-[560px]
+//    -> h-[380px]/h-[460px]) ya que era el bloque más alto de toda la
+//    página; esta sección sigue siendo la más "grande" visualmente, solo
+//    se ajusta a un tamaño más proporcional al resto del sitio.
 
 "use client";
 
@@ -70,7 +77,7 @@ export default function VideoShowcase() {
   const current = ITEMS[active];
 
   return (
-    <section className="bg-paper py-28">
+    <section className="bg-paper py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <ScrollReveal className="max-w-xl">
           <span className="tag-mono">En acción</span>
@@ -84,8 +91,8 @@ export default function VideoShowcase() {
 
         {/* Panel grande destacado: video activo con overlay de texto y botones,
             mismo patrón visual usado en el Hero (badge + título + CTAs) */}
-        <div className="relative mt-14 overflow-hidden rounded-3xl">
-          <div className="relative h-[460px] w-full lg:h-[560px]">
+        <div className="relative mt-12 overflow-hidden rounded-3xl">
+          <div className="relative h-[380px] w-full lg:h-[460px]">
             <AnimatePresence mode="wait">
               <motion.video
                 key={current.video}
@@ -108,20 +115,20 @@ export default function VideoShowcase() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
 
             {/* Overlay de contenido: badge, título, descripción y CTAs */}
-            <div className="absolute inset-x-0 bottom-0 p-7 lg:p-12">
+            <div className="absolute inset-x-0 bottom-0 p-7 lg:p-10">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-electric" />
                 <span className="tag-mono">{current.tag}</span>
               </span>
 
-              <h3 className="mt-4 max-w-xl font-display text-3xl font-semibold text-white lg:text-4xl">
+              <h3 className="mt-4 max-w-xl font-display text-2xl font-semibold text-white lg:text-3xl">
                 {current.title}
               </h3>
               <p className="mt-2 max-w-md text-sm text-white/75">
                 {current.description}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-5 flex flex-wrap gap-3">
                 <a href="#contacto" className="btn-primary">
                   Diagnóstico gratuito
                 </a>

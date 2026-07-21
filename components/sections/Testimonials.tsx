@@ -3,6 +3,11 @@
 // IMPORTANTE: reemplazar por testimonios reales antes de publicar (evitar
 // publicidad engañosa). Carrusel simple con desplazamiento horizontal y
 // snap-scroll nativo (sin JS adicional para el scroll, mejor rendimiento).
+//
+// Cambio de esta versión: se reduce el padding vertical de la sección
+// (py-28 -> py-20) para disminuir el alto total de la página, ya que el
+// carrusel horizontal no necesita tanto espacio de "respiro" como una
+// sección de contenido vertical.
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -14,7 +19,7 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-paper py-28">
+    <section className="bg-paper py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <ScrollReveal className="max-w-xl">
           <span className="tag-mono">Testimonios</span>
@@ -27,7 +32,7 @@ export default function Testimonials() {
           <p className="mt-3 text-xs text-ink/35">* Ejemplos ilustrativos de formato.</p>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.15} className="mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
+        <ScrollReveal delay={0.15} className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
           {TESTIMONIALS.map((t) => (
             <div
               key={t.author}

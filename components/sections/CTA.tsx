@@ -4,12 +4,15 @@
 // blanco: mucho blanco + un bloque negro con acento rojo puntual.
 // Se anima al entrar en el viewport. Texto ajustado para reflejar que el
 // diagnóstico termina en una propuesta de plan mensual.
+//
+// Cambio de esta versión: se reduce el padding vertical de la sección
+// (py-28 -> py-20) para bajar la altura total de la página.
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function CTA() {
   return (
-    <section className="relative overflow-hidden bg-ink py-28">
+    <section className="relative overflow-hidden bg-ink py-20">
       {/* Resplandor rojo muy suave, centrado, único acento de color */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-electric/20 blur-[110px]" />
 

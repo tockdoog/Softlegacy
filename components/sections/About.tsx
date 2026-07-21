@@ -7,6 +7,9 @@
 //   /public/images/fundador-foto.jpg      -> tu foto
 //   /public/videos/fundador-loop.mp4      -> tu video corto en loop
 //   /public/images/fundador-loop-poster.jpg -> imagen de respaldo del video
+//
+// Cambio de esta versión: se reduce el padding vertical de la sección
+// (py-28 -> py-20) para bajar la altura total de la página.
 
 "use client";
 
@@ -15,7 +18,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="nosotros" className="bg-paper py-28">
+    <section id="nosotros" className="bg-paper py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 lg:gap-14 lg:px-10">
         {/* Columna visual: tu foto real como imagen principal */}
         <motion.div

@@ -7,13 +7,12 @@
 // El CTA principal se alinea con el mensaje del Hero (diagnóstico gratuito
 // hacia suscripción).
 //
-// Mejoras de animación agregadas:
-// 1) Indicador de sección activa ("scrollspy") que se desliza entre links
-//    usando layoutId de Framer Motion.
-// 2) Entrada animada del header al cargar la página.
-// 3) Barra de progreso de lectura (scroll) muy sutil bajo el header.
-// 4) Micro-interacción en el logo al pasar el mouse.
-// 5) Menú móvil con aparición escalonada de los links.
+// Cambios de esta versión:
+// 1) Se agrega el link "Contacto" a la navegación de escritorio y móvil
+//    para que el scrollspy también lo detecte como sección activa,
+//    reduciendo la necesidad de scroll manual para llegar al formulario.
+// 2) Se mantiene el indicador de sección activa ("scrollspy") deslizante,
+//    la barra de progreso de scroll y las animaciones de entrada existentes.
 
 "use client";
 
@@ -23,12 +22,15 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 
 // Lista central de navegación: id debe coincidir con el "id" de cada
 // sección en la página para que el scrollspy funcione correctamente.
+// "contacto" se incluye aquí para que el usuario pueda saltar directo
+// al formulario sin tener que hacer scroll manual por todas las secciones.
 const NAV_LINKS = [
   { label: "Nosotros", href: "#nosotros", id: "nosotros" },
   { label: "Servicios", href: "#servicios", id: "servicios" },
   { label: "Planes", href: "#soluciones", id: "soluciones" },
   { label: "Proceso", href: "#proceso", id: "proceso" },
   { label: "Casos", href: "#casos", id: "casos" },
+  { label: "Contacto", href: "#contacto", id: "contacto" },
 ];
 
 export default function Header() {
@@ -128,11 +130,11 @@ export default function Header() {
         </a>
 
         {/* Navegación de escritorio con indicador de sección activa animado */}
-        <nav aria-label="Navegación principal" className="hidden items-center gap-9 lg:flex">
+        <nav aria-label="Navegación principal" className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map(function (link) {
             const isActive = activeSection === link.id;
             return (
-              <a
+              
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "true" : undefined}

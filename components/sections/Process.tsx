@@ -3,6 +3,9 @@
 // círculo blanco con acento rojo, línea conectora sutil en escritorio.
 // Paso 2 ajustado para reflejar que la propuesta incluye un valor mensual
 // (modelo de suscripción), no un pago único.
+//
+// Cambio de esta versión: se reduce el padding vertical de la sección
+// (py-28 -> py-20) para bajar la altura total de la página.
 
 "use client";
 
@@ -19,7 +22,7 @@ const STEPS = [
 
 export default function Process() {
   return (
-    <section id="proceso" className="bg-paper py-28">
+    <section id="proceso" className="bg-paper py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <span className="tag-mono">Cómo trabajamos</span>

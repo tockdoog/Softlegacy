@@ -2,8 +2,6 @@
 // Configuracion global de Next.js. Aqui se definen las cabeceras (headers) de
 // seguridad que Vercel aplicara a cada respuesta HTTP del sitio, siguiendo
 // buenas practicas de ciberseguridad (OWASP Secure Headers Project).
-// Incluye frame-src para permitir la incrustacion de videos de YouTube
-// (modo youtube-nocookie, con menor recoleccion de datos) en Casos de uso.
 // La politica de scripts (CSP) es mas estricta en produccion que en
 // desarrollo: 'unsafe-eval' solo se habilita en modo desarrollo porque
 // Next.js lo necesita internamente para Fast Refresh (recarga en caliente).
@@ -11,6 +9,14 @@
 // (ver app/layout.tsx), que autoaloja las tipografias en el propio dominio
 // durante el build, por lo que no se necesita permitir fonts.googleapis.com
 // ni fonts.gstatic.com como origenes externos.
+//
+// Cambio de esta version: se elimina el permiso "frame-src
+// https://www.youtube-nocookie.com". CaseStudies.tsx ya no incrusta videos
+// de YouTube (ahora usa solo imagenes .jpg locales via next/image), por lo
+// que ese origen externo quedaba autorizado sin ningun componente que lo
+// usara. Por principio de minimo privilegio, frame-src se restringe ahora
+// solo a 'self'. Si en el futuro se vuelve a necesitar un embed externo
+// (YouTube u otro), se debe re-agregar aqui explicitamente el dominio.
 
 /** @type {import('next').NextConfig} */
 
@@ -59,7 +65,7 @@ const securityHeaders = [
       "font-src 'self'",
       "connect-src 'self'",
       "media-src 'self'",
-      "frame-src 'self' https://www.youtube-nocookie.com",
+      "frame-src 'self'",
       "frame-ancestors 'none'",
       "object-src 'none'",
       "base-uri 'self'",
