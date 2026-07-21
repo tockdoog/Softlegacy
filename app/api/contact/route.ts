@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
       text: [
         `Nombre: ${datosSeguros.nombre}`,
         `Correo: ${datosSeguros.correo}`,
-        `Telefono: ${datosSeguros.telefono || "No proporcionado"}`,
+        `Teléfono: ${datosSeguros.telefono || "No proporcionado"}`,
         `Tipo de negocio: ${datosSeguros.tipoNegocio}`,
         `Servicio: ${datosSeguros.servicio}`,
         `Mensaje: ${datosSeguros.mensaje}`,

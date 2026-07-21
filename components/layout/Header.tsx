@@ -134,7 +134,7 @@ export default function Header() {
           {NAV_LINKS.map(function (link) {
             const isActive = activeSection === link.id;
             return (
-              
+              <a
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "true" : undefined}

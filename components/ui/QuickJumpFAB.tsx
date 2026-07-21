@@ -70,7 +70,7 @@ export default function QuickJumpFAB() {
               >
                 {FAB_LINKS.map(function (link) {
                   return (
-                    
+                    <a
                       key={link.href}
                       href={link.href}
                       onClick={function () {

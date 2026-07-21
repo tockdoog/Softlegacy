@@ -111,7 +111,7 @@ export default function Hero() {
             <span className="tag-mono !text-ink/40">Ir directo a</span>
             {QUICK_JUMP_LINKS.map(function (link) {
               return (
-                
+                <a
                   key={link.href}
                   href={link.href}
                   className="group inline-flex items-center gap-1 text-[13px] font-medium text-ink/65 transition-colors hover:text-electric"
